@@ -9,16 +9,21 @@
     "generate": "nuxt-ts generate"
   },
   "dependencies": {
+    "@ionic/core": "5.4.0",
+    "@ionic/vue": "5.4.0",
     "@nuxt/content": "^1.9.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/proxy": "^2.0.1",
     "@nuxtjs/pwa": "^3.0.2",
     "ant-design-vue": "^1.6.5",
     "core-js": "^3.6.5",
+    "flutterwave-vue-v3": "^1.0.2",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",
-    "@nuxt/typescript-build": "^2.0.3"
+    "@nuxt/typescript-build": "^2.0.3",
+    "jest": "24.9.0"
   }
 }

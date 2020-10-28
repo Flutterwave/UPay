@@ -1,10 +1,10 @@
 <template>
   <div>
-    <p>  Make Payment Page
-    </p>
-    <p>Payment Type is : {{paymentType}}</p>
+
 
     <buy-airtime v-if="paymentType == 'airtime'"></buy-airtime>
+
+
     <buy-cable v-if="paymentType == 'cable'"></buy-cable>
     <buy-data v-if="paymentType == 'data'"></buy-data>
     <buy-electricity v-if="paymentType == 'power'"></buy-electricity>

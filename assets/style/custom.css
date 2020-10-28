@@ -1,0 +1,48 @@
+.centralise{
+  text-align: center !important;
+
+}
+.no-underline{
+  text-decoration: none;
+}
+ion-title{
+  text-align: center !important;
+}
+ion-back-button{
+  color:red !important;
+  background-color: black !important;
+}
+.modal-wrapper.sc-ion-modal-md{
+  opacity: 1 !important;
+}
+
+.card_padding{
+  padding: 20px;
+}
+
+.margin_top{
+  margin-top: 10px;
+}
+
+.margin_bottom{
+  margin-bottom: 10px;
+}
+
+.margin_left{
+  margin-left: 10px;
+}
+
+.margin_right{
+  margin-right: 10px;
+}
+.bold{
+  font-weight: bolder;
+}
+.no-padding{
+  padding: 0;
+}
+.inner-scroll{
+/*
+top: calc(var(--offset-top) * -2) !important;
+*/
+}

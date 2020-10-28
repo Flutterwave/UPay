@@ -1,3 +1,5 @@
+const baseHref = process.env.BASE_HREF || '/';
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -12,17 +14,48 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    script: [
+      {
+
+      },
+    ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    'ant-design-vue/dist/antd.css'
+    '../node_modules/@ionic/core/css/core.css',
+    '../node_modules/@ionic/core/css/normalize.css',
+    '../node_modules/@ionic/core/css/structure.css',
+    '../node_modules/@ionic/core/css/typography.css',
+    '../node_modules/@ionic/core/css/ionic.bundle.css',
+    '../assets/style/custom.css',
+    '../assets/style/theme.css'
+
   ],
+
+  generate: {
+    routes: [
+      '/',
+    ],
+  },
+  router: {
+    // router with correct public path
+    base: baseHref,
+    mode: 'history',
+  },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/antd-ui'
+    { src: '~/plugins/ionic.js', mode: 'client' },
+    { src: '~/plugins/flutterwave_pay.js', mode: 'client' },
+    { src: '~/plugins/utils.js', mode: 'client' },
+    { src: '~/plugins/user.js', mode: 'client' },
+    { src: '~/plugins/mock-data.js', mode: 'client' },
+    { src: '~/plugins/http.js', mode: 'client' },
+    { src: '~/plugins/wallet.js', mode: 'client' },
+
+
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -45,11 +78,22 @@ export default {
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    prefix: 'https://flutterwave-api-endpoints.herokuapp.com/api/v1',
+    //proxy: true,
+   // credentials: true,
+    browserBaseURL: 'https://flutterwave-api-endpoints.herokuapp.com/api/v1'
+
+
+
+  },
+
+  proxy: {
+    '/api/': { target: 'https://api.flutterwave.com/v3', pathRewrite: {'^/api/': ''} }
+  },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
-
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
   }
