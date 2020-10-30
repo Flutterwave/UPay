@@ -153,20 +153,71 @@
 
             <ion-grid>
               <ion-row>
-                <ion-col v-for="item in 5">
+                <ion-col>
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/mtnLogo.png">
+                  </ion-card>
+                </ion-col>
+                <ion-col>
                   <ion-card class="serviceCard">
                     <img src="../static/images/dstvLogo.png">
                   </ion-card>
                 </ion-col>
+
+
+                <ion-col>
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/9mobileLogo.png">
+                  </ion-card>
+                </ion-col>
+                <ion-col>
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/ipnxLogo.png">
+                  </ion-card>
+                </ion-col>
+                <ion-col>
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/spectranetLogo.png">
+                  </ion-card>
+                </ion-col>
+
+
               </ion-row>
 
 
               <ion-row>
-                <ion-col v-for="item in 5">
+                <ion-col>
                   <ion-card class="serviceCard">
-                    <img src="../static/images/dstvLogo.png">
+                    <img src="../static/images/goyvLogo.png">
                   </ion-card>
                 </ion-col>
+
+
+                <ion-col>
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/airtelLogo.png">
+                  </ion-card>
+                </ion-col>
+
+
+                <ion-col>
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/gloLogo.png">
+                  </ion-card>
+                </ion-col>
+
+                <ion-col>
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/ipnxLogo.png">
+                  </ion-card>
+                </ion-col>
+                <ion-col>
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/spectranetLogo.png">
+                  </ion-card>
+                </ion-col>
+
+
               </ion-row>
 
 
