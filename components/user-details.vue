@@ -74,17 +74,17 @@
         }
     }
 </script>
-<style>
+<style scoped>
 
   .card {
     margin: 0 auto;
-    color: #F7F8FB !important;
+    color: #f7a622 !important;
     margin-top: 6vh;
     border-radius: 4px;
   }
 
   .card-body {
-    background-color: #222428;
+    background-color: #070f36;
     padding: 30px;
     overflow: visible;
     border-radius: 4px;

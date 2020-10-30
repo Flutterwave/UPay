@@ -1,3 +1,20 @@
+@font-face {
+  font-family: 'Flutterwave';
+ src:  url('../../static/font/flw1.ttf');
+}
+@font-face {
+  font-family: 'FlutterwaveBold';
+  src:  url('../../static/font/flw2.ttf');
+}
+
+body, *{
+  font-family: 'Flutterwave', Fallback, sans-serif !important;
+}
+
+h1,h2,h3,h4, h5{
+  font-family: 'FlutterwaveBold', Fallback, sans-serif !important;
+}
+
 .centralise{
   text-align: center !important;
 
