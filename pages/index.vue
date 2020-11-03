@@ -1,9 +1,6 @@
 <template>
 
   <div>
-
-
-
     <div>
 
       <ion-content fullscreen class="">
@@ -20,7 +17,7 @@
             <h1>Sort all your Bills from</h1>
             <h1>the comfort of your zone</h1>
             <p>Automated payments to make sure you</p>
-            <p>always have you need </p>
+            <p>always have what you need </p>
 
             <div>
               <nuxt-link to="/dashboard" tag="ion-button" expand="block" >Get Started</nuxt-link>
@@ -34,10 +31,10 @@
 
         <div class="section2">
 
-          <div class="section2Container">
+       <!--   <div class="section2Container">
 
 
-              <div class="item-container ion-hide-sm-down">
+              <div class="item-container ion-hide-sm-down" >
                 <img class="userImage1" src="../static/images/user1.png">
               </div>
 
@@ -51,15 +48,7 @@
 
                   <p>Lorem ipsum snbd kdjjbd djkjcd djckckjbjcs <br>cjcsd ajbjidbd sdjjdsndjsb dsajbasbidjas<br> dsaiaduasbd sajbjsab</p>
 
-             <!--     <ul class="no-padding">
-                    <li> Recharge airtime for your calls </li>
-                    <li> Pay for your internet subscription and data across any ISP </li>
-                    <li> Automate your TV Subscription </li>
 
-                    <li> Pay for your Electricity bills </li>
-
-
-                  </ul>-->
 
                   <div class="featureList">
                     <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
@@ -101,7 +90,84 @@
               </div>
 
 
-          </div>
+          </div>-->
+
+
+
+          <ion-grid>
+
+            <ion-row>
+
+              <ion-col size="7"  class="ion-hide-sm-down">
+                <img  class="userImage1" src="../static/images/user1.png">
+              </ion-col>
+
+              <ion-col>
+                <div class="section2Content ion-padding-horizontal">
+                  <h1>
+                    Pay your Bills
+                    <br/>anywhere, anytime.
+                  </h1>
+
+                  <p>Lorem ipsum snbd kdjjbd djkjcd djckckjbjcs <br>cjcsd ajbjidbd sdjjdsndjsb dsajbasbidjas<br> dsaiaduasbd sajbjsab</p>
+
+                  <!--     <ul class="no-padding">
+                         <li> Recharge airtime for your calls </li>
+                         <li> Pay for your internet subscription and data across any ISP </li>
+                         <li> Automate your TV Subscription </li>
+
+                         <li> Pay for your Electricity bills </li>
+
+
+                       </ul>-->
+
+                  <div class="featureList">
+                    <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
+                    <p>
+                      Recharge One time leet yskhbd  dh
+                    </p>
+                  </div>
+
+
+                  <div class="featureList">
+                    <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
+                    <p>
+                      Recharge One time leet yskhbd  dh
+                    </p>
+                  </div>
+
+
+                  <div class="featureList">
+                    <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
+                    <p>
+                      Recharge One time leet yskhbd  dh
+                    </p>
+                  </div>
+
+                  <div class="featureList">
+                    <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
+                    <p>
+                      Recharge One time leet yskhbd  dh
+                    </p>
+                  </div>
+
+
+
+
+
+                </div>
+              </ion-col>
+
+
+            </ion-row>
+
+
+
+          </ion-grid>
+
+
+
+
 
         </div>
 
@@ -115,22 +181,20 @@
 
             <ion-grid>
               <ion-row>
-                <ion-col v-for="item in 5">
+                <ion-col v-for="item in 5" >
                   <ion-card class="serviceCard">
                     <img src="../static/images/dstvLogo.png">
                   </ion-card>
                 </ion-col>
               </ion-row>
-
 
               <ion-row>
-                <ion-col v-for="item in 5">
+                <ion-col v-for="item in 5" >
                   <ion-card class="serviceCard">
                     <img src="../static/images/dstvLogo.png">
                   </ion-card>
                 </ion-col>
               </ion-row>
-
 
             </ion-grid>
           </div>
@@ -232,106 +296,181 @@ export default {
 
 <style scoped>
 
-  .section1{
-    color: white;
-    width: 100vw;
-    height: 75vh;
-    background-image: url("../static/images/bg1.png");
-    display: flex;
-    flex-direction: column;
-/*
+
+
+
+
+    .section1 {
+      color: white;
+      width: 100vw;
+      height: 75vh;
+      background-image: url("../static/images/bg1.png");
+      display: flex;
+      flex-direction: column;
+      /*
     //border-image-repeat: stretch;
 */
-    background-repeat: no-repeat;
-/*
-    background-size: 100vw;
-*/
+      background-repeat: no-repeat;
 
-  }
+      background-size: cover;
 
 
-  .header_content{
-    margin: 6vh auto;
-    text-align: center;
+    }
 
-  }
 
-  .logoContainer{
-    margin: 2vh 8vh;
-    display: flex;
-    align-items: center;
-  }
+    .header_content {
+      margin: 6vh auto;
+      text-align: center;
 
-  .section2{
-    margin-top: 8vh;
-  }
-.userImage1{
-  float: right;
-  padding-right: 7vw;
-  width: 40vw;
-}
+    }
 
-  .section2Container{
-    display: flex;
-    flex-direction: row;
-  /* align-items: center;
+    .logoContainer {
+      margin: 2vh 8vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .section2 {
+      margin-top: 8vh;
+    }
+
+    .userImage1 {
+      float: right;
+      padding-right: 7vw;
+      width: 40vw;
+    }
+
+    .section2Container {
+      display: flex;
+      flex-direction: row;
+      /* align-items: center;
    justify-content: center;*/
 
-  }
-  .item-container{
-    flex: 1
-  }
-  .section2Content{
-    padding-top: 3vh;
-    max-width: 50%;
-/*
+    }
+
+    .item-container {
+      flex: 1
+    }
+
+    .section2Content {
+      padding-top: 3vh;
+      max-width: 50%;
+      /*
     text-align: center;
 */
-  }
-.checkIcon{
-color: #f5a623 !important;
-}
-  ion-icon{
-    color: #f5a623 !important;
-/*
+    }
+
+    .checkIcon {
+      color: #f5a623 !important;
+    }
+
+    ion-icon {
+      color: #f5a623 !important;
+      /*
     --ionicon-stroke-color: #f5a623 !important;
 */
-/*
+      /*
     background: #f5a623;
 */
 
-  }
-.featureList{
-display: flex;
-  align-items: center;
-/*
+    }
+
+    .featureList {
+      display: flex;
+      align-items: center;
+      /*
   justify-content: center;
 */
 
 
-}
-  ion-icon div svg polyline {
-    color: #f5a623 !important;
+    }
+
+    ion-icon div svg polyline {
+      color: #f5a623 !important;
+
+    }
+
+    .section3 {
+      margin-top: 6vh;
+      text-align: center;
+
+
+    }
+
+    .serviceList {
+      display: flex;
+      width: 70%;
+      margin: 0 auto;
+
+    }
+
+    .serviceCard {
+      padding-top: 2vh;
+      padding-bottom: 2vh;
+      box-shadow: 0px 0px 15px rgba(33, 43, 54, 0.2);
+    }
+
+    ion-thumbnail {
+      width: 100%;
+      border: solid #7F828B;
+      height: 50%;
+
+    }
+
+
+
+  @media only screen and (max-width: 760px) {
+    .section1{
+      color: white;
+      width: 100vw;
+      height: 75vh;
+      background-image: url("../static/images/user1.png");
+      display: flex;
+      flex-direction: column;
+      background-repeat: no-repeat;
+
+      background-size: cover;
+
+
+    }
+    .section2{
+      margin-top: 1px;
+    }
+
+    .section2Content{
+
+      max-width: 100%;
+      padding-top: 1px;
+      text-align: center;
+
+    }
+    .logoContainer{
+      display: none;
+    }
+    .header_content{
+      margin: 65% auto;
+    }
+
+    .section3{
+      margin: 1px auto;
+    }
+    .section3 > h1{
+      width: 80%;
+      margin: 1px auto;
+    }
+
+    .serviceCard{
+      margin: 0;
+    }
+
+
+
 
   }
 
-  .section3{
-    margin-top: 6vh;
-    text-align: center;
 
 
-  }
 
-  .serviceList{
-    display: flex;
-    width: 70%;
-    margin: 0 auto;
 
-  }
-  .serviceCard{
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    box-shadow: 0px 0px 15px rgba(33, 43, 54, 0.2);
-  }
 
 </style>

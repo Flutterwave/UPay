@@ -63,7 +63,7 @@ export default {
 
      let userDetails = this.$UserHelper.getUserDetails()
        if (!userDetails.token){
-           //   this.$Utils.navigateTo('/login')
+             this.$Utils.navigateTo('/login')
        }
        else{
            try{
@@ -78,7 +78,7 @@ export default {
            catch (e) {
                console.log("Token expired");
                this.$store.commit('app/setWalletFetchStatus',false )
-               // this.$Utils.navigateTo('/login')
+                this.$Utils.navigateTo('/login')
            }
 
        }
@@ -98,29 +98,11 @@ export default {
 
 <style scoped>
 
-  @media only screen and (min-width: 760px) {
+ /* @media only screen and (min-width: 760px) {
     #tab-bar { display: none; }
-  }
+  }*/
 
 
-
-
-  .section1{
-    color: white;
-    width: 100vw;
-    height: 75vh;
-    background-image: url("../static/images/bg1.png");
-    display: flex;
-    flex-direction: column;
-/*
-    //border-image-repeat: stretch;
-*/
-    background-repeat: no-repeat;
-/*
-    background-size: 100vw;
-*/
-
-  }
 
 
   .header_content{
