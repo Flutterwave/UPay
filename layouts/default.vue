@@ -17,9 +17,9 @@
 
 
 
+<!--
 
-
-            <ion-title>Menu</ion-title>
+            <ion-title>Menu</ion-title>-->
           </ion-toolbar>
         </ion-header>
 
@@ -140,3 +140,11 @@
         }
     }
 </script>
+
+<style scoped>
+  .logoContainer {
+    margin: 2vh 8vh;
+    display: flex;
+    align-items: center;
+  }
+</style>
