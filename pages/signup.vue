@@ -105,6 +105,7 @@
 
     export default {
         name: 'sign_up',
+        layout: 'noSideBar',
         data() {
             return {
                 newUserData: {

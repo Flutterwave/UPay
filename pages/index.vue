@@ -8,7 +8,6 @@
         <div class="section1">
 
           <div class="logoContainer">
-
             <img class="logoImg" src="../static/images/logo.png">&nbsp;
             <p>OSS</p>
           </div>

@@ -5,9 +5,9 @@
     <ion-header translucent>
       <ion-toolbar>
 
-        <ion-title>Payments</ion-title>
+        <ion-title>Home</ion-title>
 
-<profile-button></profile-button>
+<profile-button class="ion-hide-sm-down"></profile-button>
 
       </ion-toolbar>
     </ion-header>

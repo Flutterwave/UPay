@@ -25,8 +25,8 @@
           <ion-icon name="wallet-outline"></ion-icon>    </ion-tab-button>
 
 
-        <ion-tab-button tab="payments"   >
-          <ion-label>Purchase VAS</ion-label>
+        <ion-tab-button tab="payments">
+          <ion-label>Home</ion-label>
           <ion-icon name="grid-outline"></ion-icon>    </ion-tab-button>
 
         <ion-tab-button tab="history">
