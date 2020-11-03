@@ -1,49 +1,10 @@
 <template>
 
   <div>
-    <ion-tabs v-if="showApp">
-      <ion-tab tab="payments">
-        <payment-list></payment-list>
-      </ion-tab>
-
-      <ion-tab tab="fund">
-        <fund-wallet></fund-wallet>
-      </ion-tab>
 
 
 
-      <ion-tab tab="history">
-        <history></history>
-      </ion-tab>
-
-      <ion-tab-bar slot="bottom">
-
-
-
-
-
-        <ion-tab-button tab="fund">
-          <ion-label>Fund Wallet</ion-label>
-          <ion-icon name="wallet-outline"></ion-icon>    </ion-tab-button>
-
-
-        <ion-tab-button tab="payments"   >
-          <ion-label>Purchase VAS</ion-label>
-          <ion-icon name="grid-outline"></ion-icon>    </ion-tab-button>
-
-        <ion-tab-button tab="history">
-          <ion-label>History</ion-label>
-          <ion-icon name="bar-chart-outline"></ion-icon>    </ion-tab-button>
-
-      </ion-tab-bar>
-    </ion-tabs>
-
-
-    <div v-if="!showApp">
-
-
-
-
+    <div>
 
       <ion-content fullscreen class="">
 
@@ -62,7 +23,8 @@
             <p>always have you need </p>
 
             <div>
-              <ion-button expand="block" @click="showApp = true">Get Started</ion-button>
+              <nuxt-link to="/dashboard" tag="ion-button" expand="block" >Get Started</nuxt-link>
+
             </div>
           </div>
 
@@ -153,71 +115,20 @@
 
             <ion-grid>
               <ion-row>
-                <ion-col>
-                  <ion-card class="serviceCard">
-                    <img src="../static/images/mtnLogo.png">
-                  </ion-card>
-                </ion-col>
-                <ion-col>
+                <ion-col v-for="item in 5">
                   <ion-card class="serviceCard">
                     <img src="../static/images/dstvLogo.png">
                   </ion-card>
                 </ion-col>
-
-
-                <ion-col>
-                  <ion-card class="serviceCard">
-                    <img src="../static/images/9mobileLogo.png">
-                  </ion-card>
-                </ion-col>
-                <ion-col>
-                  <ion-card class="serviceCard">
-                    <img src="../static/images/ipnxLogo.png">
-                  </ion-card>
-                </ion-col>
-                <ion-col>
-                  <ion-card class="serviceCard">
-                    <img src="../static/images/spectranetLogo.png">
-                  </ion-card>
-                </ion-col>
-
-
               </ion-row>
 
 
               <ion-row>
-                <ion-col>
+                <ion-col v-for="item in 5">
                   <ion-card class="serviceCard">
-                    <img src="../static/images/goyvLogo.png">
+                    <img src="../static/images/dstvLogo.png">
                   </ion-card>
                 </ion-col>
-
-
-                <ion-col>
-                  <ion-card class="serviceCard">
-                    <img src="../static/images/airtelLogo.png">
-                  </ion-card>
-                </ion-col>
-
-
-                <ion-col>
-                  <ion-card class="serviceCard">
-                    <img src="../static/images/gloLogo.png">
-                  </ion-card>
-                </ion-col>
-
-                <ion-col>
-                  <ion-card class="serviceCard">
-                    <img src="../static/images/ipnxLogo.png">
-                  </ion-card>
-                </ion-col>
-                <ion-col>
-                  <ion-card class="serviceCard">
-                    <img src="../static/images/spectranetLogo.png">
-                  </ion-card>
-                </ion-col>
-
-
               </ion-row>
 
 
@@ -251,32 +162,68 @@ import History from "~/components/history.vue";
 
 export default {
     components: {History, PaymentList, FundWallet},
+    layout: 'noSideBar',
     data(){
         return {
-            showApp: false
+            //showApp: this.$store.state.app.showApp
         }
     },
+    computed: {
+        showApp(){
+            return this.$store.state.app.showApp
+        }
+    },
+
    async  mounted() {
 
 
-      let userDetails = this.$UserHelper.getUserDetails()
-      if (!userDetails.token){
-       //   this.$Utils.navigateTo('/login')
-      }
-      else{
-          try{
 
-           let res =   await this.$axios.$get('balance')
-              console.log("INIT USER WALLET", res)
-              this.$store.commit('wallet/update',res.data.wallet_amount )
-          }
-          catch (e) {
-              console.log("Token expired");
-             // this.$Utils.navigateTo('/login')
-          }
+       const api =  this.$axios.create({
+           headers: {
+               common: {
+                   Accept: 'text/plain, */*',
+               } ,
+               'X-Requested-With': "browser",
+               'Authorization': 'Bearer FLWSECK-f451fa608690375ef578265d387bcc07-X'
+           }
+       })
+       let billCategories =   await api.$get("https://cors-anywhere.herokuapp.com/https://api.flutterwave.com/v3/bill-categories")
+       this.$store.commit('app/setBillsData', billCategories.data )
 
-      }
+       console.log("BILLS", billCategories)
 
+       let userDetails = this.$UserHelper.getUserDetails()
+       if (!userDetails.token){
+           //   this.$Utils.navigateTo('/login')
+       }
+       else{
+           try{
+
+               this.$store.commit('app/setWalletFetchStatus',true )
+
+               let res =   await this.$axios.$get('balance')
+               console.log("INIT USER WALLET", res)
+               this.$store.commit('wallet/update',res.data.wallet_amount )
+               this.$store.commit('app/setWalletFetchStatus',false )
+           }
+           catch (e) {
+               console.log("Token expired");
+               this.$store.commit('app/setWalletFetchStatus',false )
+               // this.$Utils.navigateTo('/login')
+           }
+
+       }
+
+
+
+
+
+
+   } ,
+    methods:{
+        makeAppVisible(){
+            this.$store.commit('app/showApp', true )
+        }
     }
 
 
@@ -336,9 +283,7 @@ export default {
   }
   .section2Content{
     padding-top: 3vh;
-/*
     max-width: 50%;
-*/
 /*
     text-align: center;
 */

@@ -4,7 +4,7 @@
       <ion-toolbar>
         <back-button></back-button>
 
-        <ion-title>Buy Cable Subscription</ion-title>
+        <ion-title>Buy Power</ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -17,46 +17,25 @@
 
           <ion-label position="floating">Provider</ion-label>
           <ion-select  :value="paymentData.provider" @ionChange="paymentData.provider = $event.target.value" >
-            <ion-select-option v-for="item in providers" :key="item.code" :value="item.code">{{item.name}}</ion-select-option>
+            <ion-select-option v-for="item in providers" :key="item.item_code" :value="item.item_code">{{item.name}}</ion-select-option>
 
 
           </ion-select>
         </ion-item>
 
-
-
-        <ion-grid>
-          <ion-row>
-            <ion-col size="7" >
               <ion-item>
-                <ion-label position="floating">Package</ion-label>
-                <ion-select  :value="paymentData.type" @ionChange="paymentData.type = $event.target.value" >
-                  <ion-select-option v-for="item in selectedProviderPackage" :key="item.id" :value="item.biller_name" >{{ item.biller_name }}</ion-select-option>
-
-                </ion-select>
-
+                <ion-label position="floating">Amount</ion-label>
+                <ion-input :value="paymentData.amount"     @ionInput="paymentData.amount = $event.target.value" ></ion-input>
               </ion-item>
-            </ion-col>
-
-            <ion-col >
-              <ion-item>
-                <ion-label position="floating">Price</ion-label>
-                <ion-input :value="paymentData.amount" disabled></ion-input>
-              </ion-item>
-
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-
 
 
         <ion-item>
 
-          <ion-grid>
+          <ion-grid class="no-padding">
             <ion-row>
               <ion-col size="10">
 
-                <ion-label position="floating">Device Number</ion-label>
+                <ion-label position="floating">Meter ID</ion-label>
 
                 <ion-input   debounce="0"
                              :value="paymentData.deviceId"
@@ -72,17 +51,12 @@
           </ion-grid>
 
         </ion-item>
-
         <ion-card v-if="customerDetails.name">
           <ion-card-content>
             <h3>Customer Details</h3>
             <p>{{customerDetails.name}}</p>
           </ion-card-content>
         </ion-card>
-
-
-
-
 
         <ion-button  expand="block" class="centralise margin_top" :disabled="!canSubmit" @click="makePayment">PURCHASE</ion-button>
 
@@ -97,7 +71,7 @@
 <script>
 
     export default {
-        name: "BuyCable",
+        name: "BuyPower",
         data(){
             return {
                 paymentData: {
@@ -107,25 +81,47 @@
                     dataPackageId: '',
                     deviceId: '',
                     amount: '',
-                    type: '',
+                    type: 'IKEDC Prepaid topup',
                 } ,
                 isSubmitting: false,
                 showSpinner: false,
-                providers : [ {
-                    name: "DSTV",
-                    code: "BIL121"
-                },
+                providers : [
                     {
-                        name: "GOTV",
-                        code: "BIL122"
+                    name: "Ikeja Disco Pre Paid",
+                    code: "BIL113",
+                    "item_code": "UB159",
                     },
                     {
-                        name: "Startimes",
-                        code: "BIL123"
-                    }],
+                        name: "Ikeja Disco Post Paid",
+                        code: "BIL113",
+                        "item_code": "UB160",
+                    },
+                    {
+                        name: "Ibadan Disco Prepaid",
+                        code: "BIL114",
+                        "item_code": "UB161",
 
-                selectedProviderPackage: [],
-                selectedPackageData : {},
+                    },
+                    {
+                        name: "Ibadan Disco Prepaid",
+                        code: "BIL114",
+                        "item_code": "UB162",
+
+                    },
+                    {
+                        name: "Enugu Disco Pre Paid",
+                        code: "BIL115",
+                        "item_code": "UB163",
+
+                    },
+                    {
+                        name: "Enugu Disco Post Paid",
+                        code: "BIL115",
+                        "item_code": "UB164",
+
+                    },
+                    ],
+                selectedItemDetails : {},
                 customerDetails: {}
 
             }
@@ -139,36 +135,18 @@
             }
         },
         watch: {
+            //45700754471
             'paymentData.provider' : function(val){
-                console.log("Selected Cable Provider", val)
-                let _package = this.allPackage.filter((item)=>{
-                  return (item.biller_code == val && item.country == 'NG')
-                    }
+                console.log("Selected Power Provider", val)
+                let discoItem = this.allPackage.filter((item)=>{
+                  return (item.item_code == val)
+                    });
 
-                );
+                this.selectedItemDetails = discoItem[0]
+                console.log("Selected Power Item", this.selectedItemDetails )
 
-                let selectedPackage =   this.providers.filter(
-                    (item)=> {
-                        return  item.code == val
-                    }
-                )
-                console.log("Selected Package data", selectedPackage)
 
-                this.selectedProviderPackage = _package
-                this.paymentData.providerName = selectedPackage[0].name
-            },
-            'paymentData.type' : function(val){
-                console.log("Selected Package", val)
-                let _package = this.allPackage.filter((item)=>{
-                        return item.biller_name == val
-                    }
-
-                );
-                console.log(" Package", _package)
-                this.paymentData.amount = _package[0].amount
-                this.selectedPackageData = _package[0]
-            },
-            //   deep: true
+            }
         },
         methods: {
 
@@ -187,8 +165,8 @@
                            'Authorization': 'Bearer FLWSECK-f451fa608690375ef578265d387bcc07-X'
                        }
                    })
-// 1046275698
-                   let device = await api.$get(`https://cors-anywhere.herokuapp.com/https://api.flutterwave.com/v3/bill-items/${this.selectedPackageData.item_code}/validate?code=${this.selectedPackageData.biller_code}&customer=${this.paymentData.deviceId}`)
+
+                   let device = await api.$get(`https://cors-anywhere.herokuapp.com/https://api.flutterwave.com/v3/bill-items/${this.selectedItemDetails.item_code}/validate?code=${this.selectedItemDetails.biller_code}&customer=${this.paymentData.deviceId}`)
                    console.log(device)
                    this.customerDetails = device.data
                    this.showSpinner = false
@@ -218,10 +196,10 @@
                     "customer": this.paymentData.deviceId,
                     "amount": this.paymentData.amount,
                     "recurrence": "ONCE",
-                    type: this.paymentData.type,
-                    biller_name:this.paymentData.type,
+                    type: this.selectedItemDetails.biller_name,
+                    biller_name:this.selectedItemDetails.biller_name,
                     "reference": this.generateReference(),
-                    "package_data": "CABLE",
+                    "package_data": "POWER",
                 } ;
 
                 console.log(paymentParams)

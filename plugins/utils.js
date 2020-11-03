@@ -9,6 +9,10 @@ export default (context, inject) => {
       context.redirect(path);
     },
 
+    isMobileView(){
+      return false
+    } ,
+
     async  presentToast(message, duration = '5000', position = 'top',header = '',buttons = []) {
 
       const toast = document.createElement('ion-toast');

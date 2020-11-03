@@ -66,6 +66,7 @@
 
     export default {
         name: 'login',
+        layout: 'noSideBar',
         data() {
             return {
                 userData: {
@@ -97,7 +98,7 @@
                     this.$UserHelper.updateUserDetails(userLoginResponse.data)
                   this.$UserHelper.updateUserToken(userLoginResponse.data.token)
 
-                   this.$Utils.navigateTo('/')
+                   this.$Utils.navigateTo('/dashboard')
 
                   /*  country: "nigeria"
                     email: "user3@mail.com"

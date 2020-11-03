@@ -86,7 +86,7 @@
         name: "buy-data",
         data(){
             return {
-                allNetworkDataPackage: this.$MOCK_DATA.billCategories,
+
                 paymentData: {
                     network: '',
                     networkName: '',
@@ -100,24 +100,29 @@
                 networks : [
                     {
                         name: "MTN",
-                        code: "BIL104"
+                        code: "BIL108"
                     },
                     {
                         name: "GLO",
-                        code: "BIL105"
+                        code: "BIL109"
                     },
                     {
                         name: "AIRTEL",
-                        code: "BIL106"
+                        code: "BIL110"
                     },
                     {
                         name: "9Mobile",
-                        code: "BIL107"
+                        code: "BIL111"
                     }
                 ],
 
                 selectedNetworkDataPackage: [],
                 selectedNetworkData: {}
+            }
+        },
+        computed: {
+            allNetworkDataPackage(){
+                return this.$store.state.app.bills
             }
         },
         watch: {
@@ -167,21 +172,20 @@
             async makePayment() {
 
                 let  paymentParams = {
-                    "amount": 0,
-                 //   "customer": "+234" + parseInt(this.paymentData.mobileNumber) ,
-                    "customer": this.paymentData.mobileNumber,
-                    "recurrence": "ONCE",
-                    "package_data": "DATA",
                     "country": "NG",
-        //  "biller_name": this.paymentData.networkName + " DATA BUNDLE",
-                    "biller_name": this.paymentData.type,
-                  //   type: this.paymentData.type,
-                    type: this.paymentData.networkName + " DATA BUNDLE",
-                    "reference": this.generateReference()
+                    "customer": this.paymentData.mobileNumber,
+                    "amount": this.paymentData.amount,
+                    "recurrence": "ONCE",
+                    type: this.paymentData.type,
+                    biller_name:this.paymentData.type,
+                    "reference": this.generateReference(),
+                    "package_data": "DATA",
+
+
                 } ;
 
                 console.log(paymentParams)
-
+                return
 
                 this.$Utils.showSpinner( "Processing...")
 
@@ -190,7 +194,7 @@
                 if(paymentResponse.status == '201' ){
                     this.$Utils.dismissSpinner()
 
-                    alert("Payment successful")
+                    this.$Utils.presentToast("Data Purchase is Successful")
                 }
             },
 

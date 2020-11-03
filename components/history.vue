@@ -15,14 +15,16 @@
   <ion-content fullscreen class="">
 
 
-  <ion-card style="margin-top: 1vh">
+  <ion-card style="margin-top: 1vh;height: 100vh">
 
       <ion-card-content class="no-padding">
         <ion-toolbar>
           <ion-segment value="all" @ionChange="segmentChanged($event)">
+
             <ion-segment-button value="all">
               <ion-label>All</ion-label>
             </ion-segment-button>
+
 
             <ion-segment-button value="airtime">
               <ion-label>Airtime</ion-label>
@@ -31,22 +33,50 @@
             <ion-segment-button value="data">
               <ion-label>Data</ion-label>
             </ion-segment-button>
+            <ion-segment-button value="cable">
+              <ion-label>Cable</ion-label>
+            </ion-segment-button>
+
+            <ion-segment-button value="power">
+              <ion-label>Power</ion-label>
+            </ion-segment-button>
+
+
+
+
+
 
           </ion-segment>
         </ion-toolbar>
 
-        <div v-if="historyList.length > 0">
+        <div v-if="historyIsFetched">
 
-          <ion-list  >
-            <ion-item>
-              <ion-label v-for="item in historyList" :key="item.id">{{item.name}}</ion-label>
+          <ion-list>
+
+            <ion-item v-for="item in historyList" :key="item.id">
+
+              <ion-label>
+                <h3>
+                 Category: {{item.package_data}}
+                </h3>
+                <p>
+                  Item: {{item.biller_name}}
+                </p>
+                <p>
+                Price: ₦{{item.amount}}
+                </p>
+                <p>
+                  DateTime: {{new Date(item.created_at).toLocaleString()}}
+                </p>
+              </ion-label>
             </ion-item>
+
+
 
           </ion-list>
 
 
         </div>
-
 
 
         <div v-else>
@@ -65,10 +95,14 @@
                 <p>
                   <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
                 </p>
+                <p>
+                  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                </p>
               </ion-label>
             </ion-item>
 
           </ion-list>
+
         </div>
 
 
@@ -87,36 +121,48 @@
 <script>
     export default {
         name: "History",
-        data(){
+        data() {
             return {
-                    allHistory: [],
-                    historyList: []
-                }
-        } ,
-       async mounted() {
+                allHistory: [],
+                historyList: [],
+                historyIsFetched:false
+            }
+        },
+        async mounted() {
             console.log("sync data")
             let history = await this.$axios.$get('/bills')
-          this.allHistory = history.data;
-           this.historyList = this.allHistory
+            this.allHistory = history.data;
+            this.historyList = this.allHistory
+           this.historyIsFetched = true
         },
-        computed :{
-            airtimeHistory(){
-                let history = this.allHistory.filter((item)=>
-                item.package_data == 'Airtime')
+        computed: {
+            airtimeHistory() {
+                let history = this.allHistory.filter((item) =>
+                    item.package_data == 'Airtime')
                 return history
-            } ,
-            dataHistory(){
-                let history = this.allHistory.filter((item)=>
-                    item.package_data == 'Data')
+            },
+            dataHistory() {
+                let history = this.allHistory.filter((item) =>
+                    item.package_data == 'DATA')
                 return history
-            }
+            },
 
-        } ,
-        methods:{
-            segmentChanged (event){
+        },
+        methods: {
+            segmentChanged(event) {
                 let selectedSegment = event.detail.value
-                console.log("SEGMENT" ,selectedSegment)
-                switch (selectedSegment) {
+                console.log("SEGMENT", selectedSegment)
+
+                if (selectedSegment == 'all') {
+                    this.historyList = this.allHistory
+                } else {
+                    this.historyList = this.allHistory.filter((item) => {
+                        return (item.package_data.toLocaleLowerCase() == selectedSegment.toLocaleLowerCase())
+
+                    })
+
+                }
+                /*  switch (selectedSegment) {
                     case 'all':
                         this.historyList = this.allHistory
                         break;
@@ -129,7 +175,7 @@
                         this.historyList = this.dataHistory
                         break;
 
-                }
+                }*/
 
 
             }

@@ -10,16 +10,28 @@
           <img :src="profileImage" alt="">
         </div>
 
+
+
         <div class="user-meta ion-text-center">
           <h2 style="">Welcome</h2>
           <h3 class="username">{{username}}</h3>
-          <h5 class="wallet">Wallet Balance : {{wallet}}</h5>
+          <span>
+              <h5 class="wallet">
+                Wallet Balance :
+                 <ion-spinner v-if="walletFetchInProgress" name="lines-small"></ion-spinner>
+             <span v-else>  {{wallet}}</span>
+
+
+              </h5>
+          </span>
+
+            <!--<ion-spinner v-if="walletFetchInProgress" name="lines-small"></ion-spinner>
+           -->
 
         </div>
 
       </div>
     </div>
-
 
 
 
@@ -50,6 +62,9 @@
             wallet () {
                 return this.$store.state.wallet.amount
             },
+            walletFetchInProgress () {
+                return this.$store.state.app.walletFetchInProgress
+            },
             username(){
                 return  this.userDetails.f_name + " " + this.userDetails.l_name
             }
@@ -75,6 +90,9 @@
     }
 </script>
 <style scoped>
+  ion-spinner{
+    --color: #f7a622 !important;
+  }
 
   .card {
     margin: 0 auto;
