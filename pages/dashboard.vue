@@ -98,9 +98,9 @@ export default {
 
 <style scoped>
 
- /* @media only screen and (min-width: 760px) {
+  @media only screen and (min-width: 760px) {
     #tab-bar { display: none; }
-  }*/
+  }
 
 
 
