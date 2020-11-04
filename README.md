@@ -1,4 +1,4 @@
-# demo
+# UPay
 
 ## Build Setup
 
