@@ -4,7 +4,7 @@
     <ion-header translucent>
     <ion-toolbar>
       <ion-title >History</ion-title>
-      <profile-button></profile-button>
+      <profile-button class="ion-hide-md-up"></profile-button>
 
     </ion-toolbar>
 

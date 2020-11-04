@@ -7,7 +7,7 @@
 
         <ion-title>Home</ion-title>
 
-<profile-button class="ion-hide-sm-down"></profile-button>
+<profile-button class="ion-hide-md-up"></profile-button>
 
       </ion-toolbar>
     </ion-header>

@@ -59,12 +59,19 @@ ion-back-button{
   padding: 0;
 }
 
+ion-button{
+
+  -webkit-tap-highlight-color: #f7a622 ;
+
+}
+
 .inner-scroll{
 /*
 top: calc(var(--offset-top) * -2) !important;
 */
 }
 /*
+
 
 
 

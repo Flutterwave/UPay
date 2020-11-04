@@ -3,7 +3,8 @@
     <ion-header translucent>
       <ion-toolbar>
         <ion-title>Fund Wallet</ion-title>
-        <profile-button></profile-button>
+
+        <profile-button class="ion-hide-md-up"></profile-button>
 
       </ion-toolbar>
     </ion-header>

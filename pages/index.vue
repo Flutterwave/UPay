@@ -514,7 +514,7 @@ export default {
       display: none;
     }
     .header_content{
-      margin: 65% auto;
+      margin: 55% auto;
     }
 
     .section3{
@@ -528,8 +528,14 @@ export default {
     .serviceCard{
       margin: 0;
     }
+    .featureList{
+      justify-content: center;
+    }
 
 
+    .serviceList{
+      width: 90%;
+    }
 
 
   }
