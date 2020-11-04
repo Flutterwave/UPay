@@ -11,22 +11,21 @@
         </div>
 
 
-
         <div class="user-meta ion-text-center">
           <h2 style="">Welcome</h2>
           <h3 class="username">{{username}}</h3>
           <span>
               <h5 class="wallet">
                 Wallet Balance :
-                 <ion-spinner v-if="walletFetchInProgress" name="lines-small"></ion-spinner>
+                 <ion-spinner name="lines-small" v-if="walletFetchInProgress"></ion-spinner>
              <span v-else>  {{wallet}}</span>
 
 
               </h5>
           </span>
 
-            <!--<ion-spinner v-if="walletFetchInProgress" name="lines-small"></ion-spinner>
-           -->
+          <!--<ion-spinner v-if="walletFetchInProgress" name="lines-small"></ion-spinner>
+         -->
 
         </div>
 
@@ -34,63 +33,56 @@
     </div>
 
 
-
   </div>
 </template>
 
 <script>
-   /* country: "nigeria"
-    email: "user3@mail.com"
-    f_name: "user3"
-    id: 4
-    l_name: "user3"
-    phone: "097656667"
-    token: "eyJhbGciOiJIUzI1NiI*/
+    /* country: "nigeria"
+     email: "user3@mail.com"
+     f_name: "user3"
+     id: 4
+     l_name: "user3"
+     phone: "097656667"
+     token: "eyJhbGciOiJIUzI1NiI*/
     export default {
         name: 'UserDetails',
-        data(){
+        data() {
             return {
                 userDetails: {
                     f_name: '',
                     l_name: ''
                 },
-               // wallet: '0',
-                profileImage : "images/userIcon.png"
+                // wallet: '0',
+                profileImage: "images/userIcon.png"
             }
-        } ,
+        },
         computed: {
-            wallet () {
+            wallet() {
                 return this.$store.state.wallet.amount
             },
-            walletFetchInProgress () {
+            walletFetchInProgress() {
                 return this.$store.state.app.walletFetchInProgress
             },
-            username(){
-                return  this.userDetails.f_name + " " + this.userDetails.l_name
+            username() {
+                return this.userDetails.f_name + " " + this.userDetails.l_name
             }
         },
 
-        mounted(context){
-         //   console.log("User Details", this.$UserHelper.getUserDetails())
+        mounted(context) {
+            //   console.log("User Details", this.$UserHelper.getUserDetails())
 
             this.userDetails = this.$UserHelper.getUserDetails()
-          /*  this.$Wallet.fetchUserWallet().then((res) =>{
-                this.wallet = this.$Wallet.userWallet
-            })*/
-
+            /*  this.$Wallet.fetchUserWallet().then((res) =>{
+                  this.wallet = this.$Wallet.userWallet
+              })*/
 
 
         },
-        methods: {
-
-
-
-
-        }
+        methods: {}
     }
 </script>
 <style scoped>
-  ion-spinner{
+  ion-spinner {
     --color: #f7a622 !important;
   }
 
@@ -124,39 +116,33 @@
     display: flex;
     justify-content: center;
   }
+
   img {
     display: block;
     border-radius: 50%;
     position: absolute;
-    top: calc(-1*(65px + 4px));
+    top: calc(-1 * (65px + 4px));
     border: 8px solid #f5a623;
     background-color: #fff;
   }
 
 
-      .user-meta {
+  .user-meta {
 
-      }
-        .username {
-          font-size: 24px;
-          font-weight: 600;
-          color: #ffffff;
-          text-transform: capitalize;
-        }
+  }
 
-        .wallet {
-          font-size: 90%;
-          //color: #949ea6;
-          text-transform: uppercase;
-          margin: 0 auto;
-        }
+  .username {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: capitalize;
+  }
 
-
-
-
-
-
-
+  .wallet {
+    font-size: 90%;
+    text-transform: uppercase;
+    margin: 0 auto;
+  }
 
 
 </style>

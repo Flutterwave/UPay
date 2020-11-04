@@ -1,11 +1,8 @@
 import Vue from 'vue';
-import Flutterwave from  'flutterwave-vue-v3'
-
-//my test key
-//let publicKey = "FLWPUBK_TEST-0b04581c8d73fd08d5c720e1e0f803b4-X";
+import Flutterwave from 'flutterwave-vue-v3'
 
 
-let publicKey = "FLWPUBK-125e42ff0e9cb330a3555b252f4fa55e-X"
+let publicKey = process.env.pKey;
 
 Vue.use(Flutterwave, {publicKey});
 

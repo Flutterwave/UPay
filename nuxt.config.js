@@ -8,17 +8,15 @@ export default {
   head: {
     title: 'UPay',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {hid: 'description', name: 'description', content: ''}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
     ],
     script: [
-      {
-
-      },
+      {},
     ],
   },
 
@@ -45,15 +43,19 @@ export default {
     mode: 'history',
     linkActiveClass: 'active-link'
   },
+  env: {
+    pKey: process.env.P_KEY,
+    sKey: process.env.S_KEY,
+  } ,
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    { src: '~/plugins/ionic.js', mode: 'client' },
-    { src: '~/plugins/flutterwave_pay.js', mode: 'client' },
-    { src: '~/plugins/helpers/utils.js', mode: 'client' },
-    { src: '~/plugins/helpers/user.js', mode: 'client' },
-    { src: '~/plugins/helpers/http.js', mode: 'client' },
-    { src: '~/plugins/helpers/wallet.js', mode: 'client' },
+    {src: '~/plugins/ionic.js', mode: 'client'},
+    {src: '~/plugins/flutterwave_pay.js', mode: 'client'},
+    {src: '~/plugins/helpers/utils.js', mode: 'client'},
+    {src: '~/plugins/helpers/user.js', mode: 'client'},
+    {src: '~/plugins/helpers/http.js', mode: 'client'},
+    {src: '~/plugins/helpers/wallet.js', mode: 'client'},
 
 
   ],
@@ -81,20 +83,18 @@ export default {
   axios: {
     prefix: 'https://flutterwave-api-endpoints.herokuapp.com/api/v1',
     //proxy: true,
-   // credentials: true,
+    // credentials: true,
     browserBaseURL: 'https://flutterwave-api-endpoints.herokuapp.com/api/v1'
-
 
 
   },
 
   proxy: {
-    '/api/': { target: 'https://api.flutterwave.com/v3', pathRewrite: {'^/api/': ''} }
+    '/api/': {target: 'https://api.flutterwave.com/v3', pathRewrite: {'^/api/': ''}}
   },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {
-  }
+  build: {}
 }

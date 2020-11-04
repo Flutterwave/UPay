@@ -3,7 +3,7 @@
   <div>
     <div>
 
-      <ion-content fullscreen class="">
+      <ion-content class="" fullscreen>
 
         <div class="section1">
 
@@ -19,7 +19,7 @@
             <p>always have what you need </p>
 
             <div>
-              <nuxt-link to="/login" tag="ion-button" expand="block" >Get Started</nuxt-link>
+              <nuxt-link expand="block" tag="ion-button" to="/login">Get Started</nuxt-link>
 
             </div>
           </div>
@@ -30,75 +30,74 @@
 
         <div class="section2">
 
-       <!--   <div class="section2Container">
+          <!--   <div class="section2Container">
 
 
-              <div class="item-container ion-hide-sm-down" >
-                <img class="userImage1" src="../static/images/user1.png">
-              </div>
+                 <div class="item-container ion-hide-sm-down" >
+                   <img class="userImage1" src="../static/images/user1.png">
+                 </div>
 
-              <div  class="item-container">
+                 <div  class="item-container">
 
-                <div class="section2Content ion-padding-horizontal">
-                  <h1>
-                    Pay your Bills
-                    <br/>anywhere, anytime.
-                  </h1>
+                   <div class="section2Content ion-padding-horizontal">
+                     <h1>
+                       Pay your Bills
+                       <br/>anywhere, anytime.
+                     </h1>
 
-                  <p>Lorem ipsum snbd kdjjbd djkjcd djckckjbjcs <br>cjcsd ajbjidbd sdjjdsndjsb dsajbasbidjas<br> dsaiaduasbd sajbjsab</p>
-
-
-
-                  <div class="featureList">
-                    <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
-                    <p>
-                      Recharge One time leet yskhbd  dh
-                    </p>
-                  </div>
-
-
-                  <div class="featureList">
-                    <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
-                    <p>
-                      Recharge One time leet yskhbd  dh
-                    </p>
-                  </div>
-
-
-                  <div class="featureList">
-                    <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
-                    <p>
-                      Recharge One time leet yskhbd  dh
-                    </p>
-                  </div>
-
-                  <div class="featureList">
-                    <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
-                    <p>
-                      Recharge One time leet yskhbd  dh
-                    </p>
-                  </div>
+                     <p>Lorem ipsum snbd kdjjbd djkjcd djckckjbjcs <br>cjcsd ajbjidbd sdjjdsndjsb dsajbasbidjas<br> dsaiaduasbd sajbjsab</p>
 
 
 
+                     <div class="featureList">
+                       <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
+                       <p>
+                         Recharge One time leet yskhbd  dh
+                       </p>
+                     </div>
 
 
-                </div>
+                     <div class="featureList">
+                       <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
+                       <p>
+                         Recharge One time leet yskhbd  dh
+                       </p>
+                     </div>
 
 
-              </div>
+                     <div class="featureList">
+                       <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
+                       <p>
+                         Recharge One time leet yskhbd  dh
+                       </p>
+                     </div>
+
+                     <div class="featureList">
+                       <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
+                       <p>
+                         Recharge One time leet yskhbd  dh
+                       </p>
+                     </div>
 
 
-          </div>-->
 
+
+
+                   </div>
+
+
+                 </div>
+
+
+             </div>-->
 
 
           <ion-grid>
 
             <ion-row>
 
-              <ion-col size="7"  class="ion-hide-sm-down">
-                <img  class="userImage1" src="../static/images/user1.png">
+              <ion-col class="ion-hide-sm-down" size="7">
+                <img class="userImage1" src="../static/images/user1.png">
               </ion-col>
 
               <ion-col>
@@ -108,7 +107,8 @@
                     <br/>anywhere, anytime.
                   </h1>
 
-                  <p>Lorem ipsum snbd kdjjbd djkjcd djckckjbjcs <br>cjcsd ajbjidbd sdjjdsndjsb dsajbasbidjas<br> dsaiaduasbd sajbjsab</p>
+                  <p>Lorem ipsum snbd kdjjbd djkjcd djckckjbjcs <br>cjcsd ajbjidbd sdjjdsndjsb dsajbasbidjas<br>
+                    dsaiaduasbd sajbjsab</p>
 
                   <!--     <ul class="no-padding">
                          <li> Recharge airtime for your calls </li>
@@ -123,18 +123,18 @@
                   <div class="featureList">
                     <img class="checked_icon" src="../static/icons/checked.png">
                     <p>
-                      Recharge One time leet yskhbd  dh
+                      Recharge One time leet yskhbd dh
                     </p>
                   </div>
 
 
                   <div class="featureList">
 
-                  <img class="checked_icon" src="../static/icons/checked.png">
+                    <img class="checked_icon" src="../static/icons/checked.png">
 
 
                     <p>
-                      Recharge One time leet yskhbd  dh
+                      Recharge One time leet yskhbd dh
                     </p>
                   </div>
 
@@ -142,19 +142,16 @@
                   <div class="featureList">
                     <img class="checked_icon" src="../static/icons/checked.png">
                     <p>
-                      Recharge One time leet yskhbd  dh
+                      Recharge One time leet yskhbd dh
                     </p>
                   </div>
 
                   <div class="featureList">
                     <img class="checked_icon" src="../static/icons/checked.png">
                     <p>
-                      Recharge One time leet yskhbd  dh
+                      Recharge One time leet yskhbd dh
                     </p>
                   </div>
-
-
-
 
 
                 </div>
@@ -164,11 +161,7 @@
             </ion-row>
 
 
-
           </ion-grid>
-
-
-
 
 
         </div>
@@ -180,28 +173,27 @@
           <div class="serviceList">
 
 
-
             <ion-grid>
               <ion-row>
 
-                <ion-col  >
+                <ion-col>
                   <ion-card class="serviceCard">
                     <img src="../static/images/dstvLogo.png">
                   </ion-card>
                 </ion-col>
 
-                <ion-col >
+                <ion-col>
                   <ion-card class="serviceCard">
                     <img src="../static/images/goyvLogo.png">
                   </ion-card>
                 </ion-col>
 
-                <ion-col  >
+                <ion-col>
                   <ion-card class="serviceCard">
                     <img src="../static/images/mtnLogo.png">
                   </ion-card>
                 </ion-col>
-                <ion-col  >
+                <ion-col>
                   <ion-card class="serviceCard">
                     <img src="../static/images/airtelLogo.png">
                   </ion-card>
@@ -215,45 +207,42 @@
               </ion-row>
 
               <ion-row>
-                <ion-col  >
+                <ion-col>
                   <ion-card class="serviceCard">
                     <img src="../static/images/spectranetLogo.png">
                   </ion-card>
                 </ion-col>
 
 
-                <ion-col  >
+                <ion-col>
                   <ion-card class="serviceCard">
                     <img src="../static/images/9mobileLogo.png">
                   </ion-card>
                 </ion-col>
 
-                <ion-col  >
+                <ion-col>
                   <ion-card class="serviceCard">
                     <img src="../static/images/ipnxLogo.png">
                   </ion-card>
                 </ion-col>
 
-                <ion-col  >
+                <ion-col>
                   <ion-card class="serviceCard">
                     <img src="../static/images/dstvLogo.png">
                   </ion-card>
                 </ion-col>
 
-                <ion-col  >
+                <ion-col>
                   <ion-card class="serviceCard">
                     <img src="../static/images/mtnLogo.png">
                   </ion-card>
                 </ion-col>
 
 
-
-
               </ion-row>
 
             </ion-grid>
           </div>
-
 
 
         </div>
@@ -266,215 +255,200 @@
   </div>
 
 
-
-
 </template>
 
 
 <script>
-import Vue from 'vue'
-import FundWallet from "~/components/fund-wallet.vue";
-import PaymentList from "~/components/payment-list.vue";
-import History from "~/components/history.vue";
+    import FundWallet from "~/components/fund-wallet.vue";
+    import PaymentList from "~/components/payment-list.vue";
+    import History from "~/components/history.vue";
 
 
+    export default {
+        components: {History, PaymentList, FundWallet},
+        layout: 'noSideBar',
+        data() {
+            return {
+                //showApp: this.$store.state.app.showApp
+            }
+        },
+        computed: {
+            showApp() {
+                return this.$store.state.app.showApp
+            }
+        },
 
-export default {
-    components: {History, PaymentList, FundWallet},
-    layout: 'noSideBar',
-    data(){
-        return {
-            //showApp: this.$store.state.app.showApp
+        async mounted() {
+
+            /*
+
+
+                   let userDetails = this.$UserHelper.getUserDetails()
+                   if (!userDetails.token){
+                         this.$Utils.navigateTo('/login')
+                   }
+                   else{
+                       try{
+
+                           this.$store.commit('app/setWalletFetchStatus',true )
+
+                           let res =   await this.$axios.$get('balance')
+                           console.log("INIT USER WALLET", res)
+                           this.$store.commit('wallet/update',res.data.wallet_amount )
+                           this.$store.commit('app/setWalletFetchStatus',false )
+                       }
+                       catch (e) {
+                           console.log("Token expired");
+                           this.$store.commit('app/setWalletFetchStatus',false )
+                            this.$Utils.navigateTo('/login')
+                       }
+
+                   }
+
+
+            */
+
+
+        },
+        methods: {
+            makeAppVisible() {
+                this.$store.commit('app/showApp', true)
+            }
         }
-    },
-    computed: {
-        showApp(){
-            return this.$store.state.app.showApp
-        }
-    },
-
-   async  mounted() {
-
-/*
 
 
-       let userDetails = this.$UserHelper.getUserDetails()
-       if (!userDetails.token){
-             this.$Utils.navigateTo('/login')
-       }
-       else{
-           try{
-
-               this.$store.commit('app/setWalletFetchStatus',true )
-
-               let res =   await this.$axios.$get('balance')
-               console.log("INIT USER WALLET", res)
-               this.$store.commit('wallet/update',res.data.wallet_amount )
-               this.$store.commit('app/setWalletFetchStatus',false )
-           }
-           catch (e) {
-               console.log("Token expired");
-               this.$store.commit('app/setWalletFetchStatus',false )
-                this.$Utils.navigateTo('/login')
-           }
-
-       }
-
-
-*/
-
-
-
-
-   } ,
-    methods:{
-        makeAppVisible(){
-            this.$store.commit('app/showApp', true )
-        }
     }
-
-
-}
 </script>
 
 <style scoped>
 
 
-
-
-
-    .section1 {
-      color: white;
-      width: 100vw;
-      height: 75vh;
-      background-image: url("../static/images/bg1.png");
-      display: flex;
-      flex-direction: column;
-      /*
-    //border-image-repeat: stretch;
+  .section1 {
+    color: white;
+    width: 100vw;
+    height: 75vh;
+    background-image: url("../static/images/bg1.png");
+    display: flex;
+    flex-direction: column;
+    /*
+  //border-image-repeat: stretch;
 */
-      background-repeat: no-repeat;
+    background-repeat: no-repeat;
 
-      background-size: cover;
-
-
-    }
+    background-size: cover;
 
 
-    .header_content {
-      margin: 6vh auto;
-      text-align: center;
+  }
 
-    }
 
-    .logoContainer {
-      margin: 2vh 8vh;
-      display: flex;
-      align-items: center;
-    }
-
-    .section2 {
-      margin-top: 8vh;
-    }
-
-    .userImage1 {
-      float: right;
-      padding-right: 7vw;
-      width: 40vw;
-    }
-
-    .section2Container {
-      display: flex;
-      flex-direction: row;
-      /* align-items: center;
-   justify-content: center;*/
-
-    }
-
-    .item-container {
-      flex: 1
-    }
-
-    .section2Content {
-      padding-top: 3vh;
-     /* max-width: 50%;*/
-      /*
+  .header_content {
+    margin: 6vh auto;
     text-align: center;
+
+  }
+
+  .logoContainer {
+    margin: 2vh 8vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .section2 {
+    margin-top: 8vh;
+  }
+
+  .userImage1 {
+    float: right;
+    padding-right: 7vw;
+    width: 40vw;
+  }
+
+  .section2Container {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center;
+ justify-content: center;*/
+
+  }
+
+  .item-container {
+    flex: 1
+  }
+
+  .section2Content {
+    padding-top: 3vh;
+    /* max-width: 50%;*/
+    /*
+  text-align: center;
 */
-    }
+  }
 
-    .checkIcon {
-      color: #f5a623 !important;
-    }
+  .checkIcon {
+    color: #f5a623 !important;
+  }
 
-    ion-icon {
-      color: #f5a623 !important;
-      /*
-    --ionicon-stroke-color: #f5a623 !important;
+  ion-icon {
+    color: #f5a623 !important;
+    /*
+  --ionicon-stroke-color: #f5a623 !important;
 */
-      /*
-    background: #f5a623;
-*/
-
-    }
-
-    .featureList {
-      display: flex;
-      align-items: center;
-      /*
-  justify-content: center;
+    /*
+  background: #f5a623;
 */
 
+  }
 
-    }
-
-    ion-icon div svg polyline {
-      color: #f5a623 !important;
-
-    }
-
-    .section3 {
-      margin-top: 6vh;
-      text-align: center;
+  .featureList {
+    display: flex;
+    align-items: center;
+    /*
+justify-content: center;
+*/
 
 
-    }
+  }
 
-    .serviceList {
-      display: flex;
-      width: 70%;
-      margin: 0 auto;
+  ion-icon div svg polyline {
+    color: #f5a623 !important;
 
-    }
+  }
 
-    .serviceCard {
-      padding-top: 2vh;
-      padding-bottom: 2vh;
-      box-shadow: 0px 0px 15px rgba(33, 43, 54, 0.2);
-   height: 9vh !important;
-    }
-
-    .serviceCard img {
-      max-height: 5vh !important;
-       }
+  .section3 {
+    margin-top: 6vh;
+    text-align: center;
 
 
+  }
+
+  .serviceList {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+
+  }
+
+  .serviceCard {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    box-shadow: 0px 0px 15px rgba(33, 43, 54, 0.2);
+    height: 9vh !important;
+  }
+
+  .serviceCard img {
+    max-height: 5vh !important;
+  }
 
 
+  ion-thumbnail {
+    width: 100%;
+    border: solid #7F828B;
+    height: 50%;
 
-
-
-    ion-thumbnail {
-      width: 100%;
-      border: solid #7F828B;
-      height: 50%;
-
-    }
-
+  }
 
 
   @media only screen and (max-width: 760px) {
-    .section1{
+    .section1 {
       color: white;
       width: 100vw;
       height: 75vh;
@@ -487,53 +461,55 @@ export default {
 
 
     }
-    .section2{
+
+    .section2 {
       margin-top: 1px;
     }
 
-    .section2Content{
+    .section2Content {
 
       max-width: 100%;
       padding-top: 1px;
       text-align: center;
 
     }
-    .logoContainer{
+
+    .logoContainer {
       display: none;
     }
-    .header_content{
+
+    .header_content {
       margin: 55% auto;
     }
 
-    .section3{
+    .section3 {
       margin: 1px auto;
     }
-    .section3 > h1{
+
+    .section3 > h1 {
       width: 80%;
       margin: 1px auto;
     }
 
-    .serviceCard{
+    .serviceCard {
       margin: 0;
     }
-    .featureList{
+
+    .featureList {
       justify-content: center;
     }
 
 
-    .serviceList{
+    .serviceList {
       width: 90%;
     }
 
 
   }
 
-    .checked_icon{
-height: 5vh;
-    }
-
-
-
+  .checked_icon {
+    height: 5vh;
+  }
 
 
 </style>

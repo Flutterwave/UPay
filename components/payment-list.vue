@@ -7,29 +7,29 @@
 
         <ion-title>Home</ion-title>
 
-<profile-button class="ion-hide-md-up"></profile-button>
+        <profile-button class="ion-hide-md-up"></profile-button>
 
       </ion-toolbar>
     </ion-header>
 
-    <ion-content fullscreen class="ion-padding">
+    <ion-content class="ion-padding" fullscreen>
 
       <user-details></user-details>
       <ion-card style="">
-<ion-card-header>
- Payment Services
-</ion-card-header>
+        <ion-card-header>
+          Payment Services
+        </ion-card-header>
 
         <ion-card-content>
           <ion-grid>
             <ion-row>
               <ion-col size="6">
-                <NuxtLink to="/make-payment/airtime" class="no-underline" >
+                <NuxtLink class="no-underline" to="/make-payment/airtime">
                   <ion-card class="centralise">
                     <ion-card-content>
 
                       <p>Airtime</p>
-                      <ion-icon name="call-outline"  class="icon-size-mid"></ion-icon>
+                      <ion-icon class="icon-size-mid" name="call-outline"></ion-icon>
                     </ion-card-content>
                   </ion-card>
 
@@ -39,14 +39,13 @@
               </ion-col>
 
 
-
               <ion-col size="6">
-                <NuxtLink to="/make-payment/data" class="no-underline" >
+                <NuxtLink class="no-underline" to="/make-payment/data">
                   <ion-card class="centralise">
                     <ion-card-content>
 
                       <p>Data</p>
-                      <ion-icon name="globe-outline"  class="icon-size-mid"></ion-icon>
+                      <ion-icon class="icon-size-mid" name="globe-outline"></ion-icon>
                     </ion-card-content>
                   </ion-card>
 
@@ -55,35 +54,35 @@
 
               </ion-col>
 
-                 <ion-col size="6">
-                       <NuxtLink to="/make-payment/cable" class="no-underline" >
-                         <ion-card class="centralise">
-                           <ion-card-content>
+              <ion-col size="6">
+                <NuxtLink class="no-underline" to="/make-payment/cable">
+                  <ion-card class="centralise">
+                    <ion-card-content>
 
-                             <p>Cable</p>
-                             <ion-icon name="tv-outline"  class="icon-size-mid"></ion-icon>
-                           </ion-card-content>
-                         </ion-card>
+                      <p>Cable</p>
+                      <ion-icon class="icon-size-mid" name="tv-outline"></ion-icon>
+                    </ion-card-content>
+                  </ion-card>
 
-                       </NuxtLink>
-
-
-                     </ion-col>
-
-                     <ion-col size="6">
-                       <NuxtLink to="/make-payment/power" class="no-underline" >
-                         <ion-card class="centralise">
-                           <ion-card-content>
-
-                             <p>Power</p>
-                             <ion-icon name="bulb-outline"  class="icon-size-mid"></ion-icon>
-                           </ion-card-content>
-                         </ion-card>
-
-                       </NuxtLink>
+                </NuxtLink>
 
 
-                     </ion-col>
+              </ion-col>
+
+              <ion-col size="6">
+                <NuxtLink class="no-underline" to="/make-payment/power">
+                  <ion-card class="centralise">
+                    <ion-card-content>
+
+                      <p>Power</p>
+                      <ion-icon class="icon-size-mid" name="bulb-outline"></ion-icon>
+                    </ion-card-content>
+                  </ion-card>
+
+                </NuxtLink>
+
+
+              </ion-col>
 
             </ion-row>
           </ion-grid>
@@ -93,13 +92,14 @@
 
     </ion-content>
 
-</div>
+  </div>
 
 </template>
 
 <script>
     import ProfileButton from "./profile-button";
     import UserDetails from "./user-details";
+
     export default {
         name: "PaymentList",
         components: {UserDetails, ProfileButton}

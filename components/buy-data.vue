@@ -8,7 +8,7 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content fullscreen class="ion-padding">
+    <ion-content class="ion-padding" fullscreen>
 
 
       <ion-card class="card_padding">
@@ -16,60 +16,60 @@
         <ion-item>
 
           <ion-label position="floating">Network</ion-label>
-          <ion-select  :value="paymentData.network" @ionChange="paymentData.network = $event.target.value" >
-            <ion-select-option v-for="item in networks" :key="item.code" :value="item.code">{{item.name}}</ion-select-option>
+          <ion-select :value="paymentData.network" @ionChange="paymentData.network = $event.target.value">
+            <ion-select-option :key="item.code" :value="item.code" v-for="item in networks">{{item.name}}
+            </ion-select-option>
 
 
           </ion-select>
         </ion-item>
-<!--
-//08123007075
+        <!--
+        //08123007075
+        -->
+
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size="8">
+              <ion-item>
+                <ion-label position="floating">Data Plan</ion-label>
+                <ion-select :value="paymentData.type" @ionChange="paymentData.type = $event.target.value">
+                  <ion-select-option :key="item.id" :value="item.biller_name"
+                                     v-for="item in selectedNetworkDataPackage">{{ getDataValue(item.biller_name) }}
+                  </ion-select-option>
+                  <!-- <ion-select-option>AIRTEL</ion-select-option>
+                   <ion-select-option>ETISALAT</ion-select-option> <ion-select-option>GLO</ion-select-option>
 -->
+                </ion-select>
+
+              </ion-item>
+            </ion-col>
+
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating">Price</ion-label>
+                <ion-input :value="paymentData.amount" disabled></ion-input>
+              </ion-item>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 
 
-            <ion-grid>
-              <ion-row>
-                <ion-col size="8" >
-                  <ion-item>
-                  <ion-label position="floating">Data Plan</ion-label>
-             <ion-select  :value="paymentData.type" @ionChange="paymentData.type = $event.target.value" >
-    <ion-select-option v-for="item in selectedNetworkDataPackage" :key="item.id" :value="item.biller_name" >{{ getDataValue(item.biller_name) }}</ion-select-option>
-                   <!-- <ion-select-option>AIRTEL</ion-select-option>
-                    <ion-select-option>ETISALAT</ion-select-option> <ion-select-option>GLO</ion-select-option>
--->
-                  </ion-select>
-
-                  </ion-item>
-                </ion-col>
-
-                <ion-col >
-                  <ion-item>
-                    <ion-label position="floating">Price</ion-label>
-                    <ion-input :value="paymentData.amount" disabled></ion-input>
-                  </ion-item>
-
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-
-
-
-          <ion-item>
+        <ion-item>
 
           <ion-label position="floating">Mobile Number</ion-label>
 
-          <ion-input   debounce="0"
-                       :value="paymentData.mobileNumber"
-                       @ionInput="paymentData.mobileNumber = $event.target.value"
+          <ion-input :value="paymentData.mobileNumber"
+                     @ionInput="paymentData.mobileNumber = $event.target.value"
+                     debounce="0"
           ></ion-input>
         </ion-item>
 
 
-
-
-
-
-        <ion-button :disabled="!paymentData.network || !paymentData.type || !paymentData.mobileNumber"  expand="block" class="centralise margin_top" @click="makePayment">PURCHASE</ion-button>
+        <ion-button :disabled="!paymentData.network || !paymentData.type || !paymentData.mobileNumber" @click="makePayment"
+                    class="centralise margin_top" expand="block">PURCHASE
+        </ion-button>
 
 
       </ion-card>
@@ -84,7 +84,7 @@
 
     export default {
         name: "buy-data",
-        data(){
+        data() {
             return {
 
                 paymentData: {
@@ -95,9 +95,9 @@
                     mobileNumber: '',
                     amount: '',
                     type: '',
-                } ,
+                },
                 isSubmitting: false,
-                networks : [
+                networks: [
                     {
                         name: "MTN",
                         code: "BIL108"
@@ -121,84 +121,82 @@
             }
         },
         computed: {
-            allNetworkDataPackage(){
+            allNetworkDataPackage() {
                 return this.$store.state.app.bills
             }
         },
         watch: {
-            'paymentData.network' : function(val){
-                console.log("Selected Network", val)
-                let dataPackage = this.allNetworkDataPackage.filter((item)=>{
-                 return item.biller_code == val
+            'paymentData.network': function (val) {
+                console.log("Selected Network", val);
+                let dataPackage = this.allNetworkDataPackage.filter((item) => {
+                        return item.biller_code == val
                     }
-
                 );
 
-            let selectedNetwork =   this.networks.filter(
-                   (item)=> {
-                      return  item.code == val
-                   }
-               )
-                console.log("SELEcted Network", selectedNetwork)
+                let selectedNetwork = this.networks.filter(
+                    (item) => {
+                        return item.code == val
+                    }
+                );
+                console.log("SELEcted Network", selectedNetwork);
 
-         this.selectedNetworkDataPackage = dataPackage
-     this.paymentData.networkName = selectedNetwork[0].name
+                this.selectedNetworkDataPackage = dataPackage;
+                this.paymentData.networkName = selectedNetwork[0].name
             },
-            'paymentData.type' : function(val){
-                console.log("Selected Network", val)
-                let dataPackage = this.allNetworkDataPackage.filter((item)=>{
+            'paymentData.type': function (val) {
+                console.log("Selected Network", val);
+                let dataPackage = this.allNetworkDataPackage.filter((item) => {
                         return item.biller_name == val
                     }
-
                 );
-                console.log("DATA Package", dataPackage)
+                console.log("DATA Package", dataPackage);
                 this.paymentData.amount = dataPackage[0].amount
             },
-         //   deep: true
+            //   deep: true
         },
         methods: {
-            generateReference(){
-                let date = new Date()
+            generateReference() {
+                let date = new Date();
                 return date.getTime().toString();
             },
 
-            getDataValue(dataString){
+            getDataValue(dataString) {
 
                 let values = dataString.split(" ");
-               let dataValue = values[1]+values[2]
-                return dataValue.replace('data','')
+                let dataValue = values[1] + values[2];
+                return dataValue.replace('data', '')
             },
 
             async makePayment() {
 
-                let  paymentParams = {
+                let paymentParams = {
                     "country": "NG",
                     "customer": this.paymentData.mobileNumber,
                     "amount": this.paymentData.amount,
                     "recurrence": "ONCE",
                     type: this.paymentData.type,
-                    biller_name:this.paymentData.type,
+                    biller_name: this.paymentData.type,
                     "reference": this.generateReference(),
                     "package_data": "DATA",
 
 
-                } ;
+                };
 
-                console.log(paymentParams)
-                return
+                console.log(paymentParams);
+                return;
 
-                this.$Utils.showSpinner( "Processing...")
+                this.$Utils.showSpinner("Processing...");
 
-                let paymentResponse = await this.$axios.$post('/bills', paymentParams)
-                console.log(paymentResponse)
-                if(paymentResponse.status == '201' ){
-                    this.$Utils.dismissSpinner()
+                let paymentResponse = await this.$axios.$post('/bills', paymentParams);
+                console.log(paymentResponse);
+                if (paymentResponse.status == '201') {
+                    this.$Utils.dismissSpinner();
 
                     this.$Utils.presentToast("Data Purchase is Successful")
                 }
             },
 
-        } ,
+        },
 
     }
 </script>

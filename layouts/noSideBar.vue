@@ -1,6 +1,6 @@
 <template>
-  <ion-app >
- <nuxt></nuxt>
+  <ion-app>
+    <nuxt></nuxt>
   </ion-app>
 </template>
 <script>

@@ -19,6 +19,7 @@
     import BuyCable from "../../components/buy-cable";
     import BuyData from "../../components/buy-data";
     import BuyPower from "../../components/buy-power";
+
     export default {
         name: "make-payment",
         components: {BuyPower, BuyData, BuyCable, BuyAirtime},

@@ -2,9 +2,9 @@
 
   <ion-buttons slot="end">
 
-    <ion-button color="primary" @click="$UserHelper.logOut()" style="color: red">
+    <ion-button @click="$UserHelper.logOut()" color="primary" style="color: red">
       <!-- <ion-icon slot="icon-only" ios="" md="ellipsis-vertical"></ion-icon>-->
-      <ion-icon slot="icon-only" name="power-outline" style="color: red !important;"></ion-icon>
+      <ion-icon name="power-outline" slot="icon-only" style="color: red !important;"></ion-icon>
     </ion-button>
 
   </ion-buttons>

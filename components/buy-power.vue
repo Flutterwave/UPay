@@ -8,7 +8,7 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content fullscreen class="ion-padding">
+    <ion-content class="ion-padding" fullscreen>
 
 
       <ion-card class="card_padding">
@@ -16,17 +16,18 @@
         <ion-item>
 
           <ion-label position="floating">Provider</ion-label>
-          <ion-select  :value="paymentData.provider" @ionChange="paymentData.provider = $event.target.value" >
-            <ion-select-option v-for="item in providers" :key="item.item_code" :value="item.item_code">{{item.name}}</ion-select-option>
+          <ion-select :value="paymentData.provider" @ionChange="paymentData.provider = $event.target.value">
+            <ion-select-option :key="item.item_code" :value="item.item_code" v-for="item in providers">{{item.name}}
+            </ion-select-option>
 
 
           </ion-select>
         </ion-item>
 
-              <ion-item>
-                <ion-label position="floating">Amount</ion-label>
-                <ion-input :value="paymentData.amount"     @ionInput="paymentData.amount = $event.target.value" ></ion-input>
-              </ion-item>
+        <ion-item>
+          <ion-label position="floating">Amount</ion-label>
+          <ion-input :value="paymentData.amount" @ionInput="paymentData.amount = $event.target.value"></ion-input>
+        </ion-item>
 
 
         <ion-item>
@@ -37,15 +38,16 @@
 
                 <ion-label position="floating">Meter ID</ion-label>
 
-                <ion-input   debounce="0"
-                             :value="paymentData.deviceId"
-                             @ionInput="paymentData.deviceId = $event.target.value"
-                             @change="validateDeviceId"
+                <ion-input :value="paymentData.deviceId"
+                           @change="validateDeviceId"
+                           @ionInput="paymentData.deviceId = $event.target.value"
+                           debounce="0"
                 >
                 </ion-input>
               </ion-col>
               <ion-col>
-                <ion-spinner v-if="showSpinner" name="lines-small" style=" position: absolute;  bottom: 0px; "></ion-spinner>
+                <ion-spinner name="lines-small" style=" position: absolute;  bottom: 0px; "
+                             v-if="showSpinner"></ion-spinner>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -58,7 +60,8 @@
           </ion-card-content>
         </ion-card>
 
-        <ion-button  expand="block" class="centralise margin_top" :disabled="!canSubmit" @click="makePayment">PURCHASE</ion-button>
+        <ion-button :disabled="!canSubmit" @click="makePayment" class="centralise margin_top" expand="block">PURCHASE
+        </ion-button>
 
       </ion-card>
 
@@ -72,7 +75,7 @@
 
     export default {
         name: "BuyPower",
-        data(){
+        data() {
             return {
                 paymentData: {
                     provider: '',
@@ -82,14 +85,14 @@
                     deviceId: '',
                     amount: '',
                     type: 'IKEDC Prepaid topup',
-                } ,
+                },
                 isSubmitting: false,
                 showSpinner: false,
-                providers : [
+                providers: [
                     {
-                    name: "Ikeja Disco Pre Paid",
-                    code: "BIL113",
-                    "item_code": "UB159",
+                        name: "Ikeja Disco Pre Paid",
+                        code: "BIL113",
+                        "item_code": "UB159",
                     },
                     {
                         name: "Ikeja Disco Post Paid",
@@ -120,104 +123,104 @@
                         "item_code": "UB164",
 
                     },
-                    ],
-                selectedItemDetails : {},
+                ],
+                selectedItemDetails: {},
                 customerDetails: {}
 
             }
         },
         computed: {
-            allPackage(){
+            allPackage() {
                 return this.$store.state.app.bills
-            } ,
-            canSubmit(){
-       return (this.paymentData.provider && this.paymentData.type && this.customerDetails.name )
+            },
+            canSubmit() {
+                return (this.paymentData.provider && this.paymentData.type && this.customerDetails.name)
             }
         },
         watch: {
             //45700754471
-            'paymentData.provider' : function(val){
-                console.log("Selected Power Provider", val)
-                let discoItem = this.allPackage.filter((item)=>{
-                  return (item.item_code == val)
-                    });
+            'paymentData.provider': function (val) {
+                console.log("Selected Power Provider", val);
+                let discoItem = this.allPackage.filter((item) => {
+                    return (item.item_code == val)
+                });
 
-                this.selectedItemDetails = discoItem[0]
-                console.log("Selected Power Item", this.selectedItemDetails )
+                this.selectedItemDetails = discoItem[0];
+                console.log("Selected Power Item", this.selectedItemDetails)
 
 
             }
         },
         methods: {
 
-            async validateDeviceId(){
-                console.log("DEVICE ID is", this.paymentData.deviceId)
+            async validateDeviceId() {
+                console.log("DEVICE ID is", this.paymentData.deviceId);
 
-                this.customerDetails = {}
-               try{
-                   this.showSpinner = true
-                   const api =  this.$axios.create({
-                       headers: {
-                           common: {
-                               Accept: 'text/plain, */*',
-                           } ,
-                           'X-Requested-With': "browser",
-                           'Authorization': 'Bearer FLWSECK-f451fa608690375ef578265d387bcc07-X'
-                       }
-                   })
+                this.customerDetails = {};
+                try {
+                    this.showSpinner = true;
+                    const api = this.$axios.create({
+                        headers: {
+                            common: {
+                                Accept: 'text/plain, */*',
+                            },
+                            'X-Requested-With': "browser",
+                            'Authorization': 'Bearer FLWSECK-f451fa608690375ef578265d387bcc07-X'
+                        }
+                    });
 
-                   let device = await api.$get(`https://cors-anywhere.herokuapp.com/https://api.flutterwave.com/v3/bill-items/${this.selectedItemDetails.item_code}/validate?code=${this.selectedItemDetails.biller_code}&customer=${this.paymentData.deviceId}`)
-                   console.log(device)
-                   this.customerDetails = device.data
-                   this.showSpinner = false
-               } catch (e) {
-                   this.showSpinner = false
-                   this.$Utils.presentToast("Invalid Device ID. Please try again")
+                    let device = await api.$get(`https://cors-anywhere.herokuapp.com/https://api.flutterwave.com/v3/bill-items/${this.selectedItemDetails.item_code}/validate?code=${this.selectedItemDetails.biller_code}&customer=${this.paymentData.deviceId}`);
+                    console.log(device);
+                    this.customerDetails = device.data;
+                    this.showSpinner = false
+                } catch (e) {
+                    this.showSpinner = false;
+                    this.$Utils.presentToast("Invalid Device ID. Please try again")
 
-               }
+                }
 
-            } ,
-            generateReference(){
-                let date = new Date()
+            },
+            generateReference() {
+                let date = new Date();
                 return date.getTime().toString();
             },
 
-            getDataValue(dataString){
+            getDataValue(dataString) {
 
                 let values = dataString.split(" ");
-                let dataValue = values[1]+values[2]
-                return dataValue.replace('data','')
+                let dataValue = values[1] + values[2];
+                return dataValue.replace('data', '')
             },
 
             async makePayment() {
 
-                let  paymentParams = {
+                let paymentParams = {
                     "country": "NG",
                     "customer": this.paymentData.deviceId,
                     "amount": this.paymentData.amount,
                     "recurrence": "ONCE",
                     type: this.selectedItemDetails.biller_name,
-                    biller_name:this.selectedItemDetails.biller_name,
+                    biller_name: this.selectedItemDetails.biller_name,
                     "reference": this.generateReference(),
                     "package_data": "POWER",
-                } ;
+                };
 
-                console.log(paymentParams)
+                console.log(paymentParams);
 
-                return
+                return;
 
-                this.$Utils.showSpinner( "Processing...")
+                this.$Utils.showSpinner("Processing...");
 
-                let paymentResponse = await this.$axios.$post('/bills', paymentParams)
-                console.log(paymentResponse)
-                if(paymentResponse.status == '201' ){
-                    this.$Utils.dismissSpinner()
+                let paymentResponse = await this.$axios.$post('/bills', paymentParams);
+                console.log(paymentResponse);
+                if (paymentResponse.status == '201') {
+                    this.$Utils.dismissSpinner();
 
                     this.$Utils.presentToast("Cable Subscription is Successful")
                 }
             },
 
-        } ,
+        },
 
     }
 </script>
