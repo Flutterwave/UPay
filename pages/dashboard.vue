@@ -83,6 +83,19 @@ export default {
 
        }
 
+       const api =  this.$axios.create({
+           headers: {
+               common: {
+                   Accept: 'text/plain, */*',
+               } ,
+               'X-Requested-With': "browser",
+               'Authorization': 'Bearer FLWSECK-f451fa608690375ef578265d387bcc07-X'
+           }
+       })
+       let billCategories =   await api.$get("https://cors-anywhere.herokuapp.com/https://api.flutterwave.com/v3/bill-categories")
+       this.$store.commit('app/setBillsData', billCategories.data )
+
+       console.log("BILLS", billCategories)
 
 
 

@@ -31,5 +31,4 @@ export default (context, inject) => {
   };
 
   inject('UserHelper', UserHelper)
-  context.$UserHelper = UserHelper
 }

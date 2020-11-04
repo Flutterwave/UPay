@@ -50,11 +50,10 @@ export default {
   plugins: [
     { src: '~/plugins/ionic.js', mode: 'client' },
     { src: '~/plugins/flutterwave_pay.js', mode: 'client' },
-    { src: '~/plugins/utils.js', mode: 'client' },
-    { src: '~/plugins/user.js', mode: 'client' },
-    { src: '~/plugins/mock-data.js', mode: 'client' },
-    { src: '~/plugins/http.js', mode: 'client' },
-    { src: '~/plugins/wallet.js', mode: 'client' },
+    { src: '~/plugins/helpers/utils.js', mode: 'client' },
+    { src: '~/plugins/helpers/user.js', mode: 'client' },
+    { src: '~/plugins/helpers/http.js', mode: 'client' },
+    { src: '~/plugins/helpers/wallet.js', mode: 'client' },
 
 
   ],

@@ -19,7 +19,7 @@
             <p>always have what you need </p>
 
             <div>
-              <nuxt-link to="/dashboard" tag="ion-button" expand="block" >Get Started</nuxt-link>
+              <nuxt-link to="/login" tag="ion-button" expand="block" >Get Started</nuxt-link>
 
             </div>
           </div>
@@ -295,25 +295,12 @@ export default {
 
    async  mounted() {
 
+/*
 
-
-       const api =  this.$axios.create({
-           headers: {
-               common: {
-                   Accept: 'text/plain, */*',
-               } ,
-               'X-Requested-With': "browser",
-               'Authorization': 'Bearer FLWSECK-f451fa608690375ef578265d387bcc07-X'
-           }
-       })
-       let billCategories =   await api.$get("https://cors-anywhere.herokuapp.com/https://api.flutterwave.com/v3/bill-categories")
-       this.$store.commit('app/setBillsData', billCategories.data )
-
-       console.log("BILLS", billCategories)
 
        let userDetails = this.$UserHelper.getUserDetails()
        if (!userDetails.token){
-           //   this.$Utils.navigateTo('/login')
+             this.$Utils.navigateTo('/login')
        }
        else{
            try{
@@ -328,12 +315,13 @@ export default {
            catch (e) {
                console.log("Token expired");
                this.$store.commit('app/setWalletFetchStatus',false )
-               // this.$Utils.navigateTo('/login')
+                this.$Utils.navigateTo('/login')
            }
 
        }
 
 
+*/
 
 
 
