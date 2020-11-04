@@ -121,7 +121,7 @@
                        </ul>-->
 
                   <div class="featureList">
-                    <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
+                    <img class="checked_icon" src="../static/icons/checked.png">
                     <p>
                       Recharge One time leet yskhbd  dh
                     </p>
@@ -129,7 +129,10 @@
 
 
                   <div class="featureList">
-                    <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
+
+                  <img class="checked_icon" src="../static/icons/checked.png">
+
+
                     <p>
                       Recharge One time leet yskhbd  dh
                     </p>
@@ -137,14 +140,14 @@
 
 
                   <div class="featureList">
-                    <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
+                    <img class="checked_icon" src="../static/icons/checked.png">
                     <p>
                       Recharge One time leet yskhbd  dh
                     </p>
                   </div>
 
                   <div class="featureList">
-                    <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
+                    <img class="checked_icon" src="../static/icons/checked.png">
                     <p>
                       Recharge One time leet yskhbd  dh
                     </p>
@@ -180,19 +183,72 @@
 
             <ion-grid>
               <ion-row>
-                <ion-col v-for="item in 5" >
+
+                <ion-col  >
                   <ion-card class="serviceCard">
                     <img src="../static/images/dstvLogo.png">
                   </ion-card>
                 </ion-col>
+
+                <ion-col >
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/goyvLogo.png">
+                  </ion-card>
+                </ion-col>
+
+                <ion-col  >
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/mtnLogo.png">
+                  </ion-card>
+                </ion-col>
+                <ion-col  >
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/airtelLogo.png">
+                  </ion-card>
+                </ion-col>
+                <ion-col>
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/gloLogo.png">
+                  </ion-card>
+                </ion-col>
+
               </ion-row>
 
               <ion-row>
-                <ion-col v-for="item in 5" >
+                <ion-col  >
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/spectranetLogo.png">
+                  </ion-card>
+                </ion-col>
+
+
+                <ion-col  >
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/9mobileLogo.png">
+                  </ion-card>
+                </ion-col>
+
+                <ion-col  >
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/ipnxLogo.png">
+                  </ion-card>
+                </ion-col>
+
+                <ion-col  >
                   <ion-card class="serviceCard">
                     <img src="../static/images/dstvLogo.png">
                   </ion-card>
                 </ion-col>
+
+                <ion-col  >
+                  <ion-card class="serviceCard">
+                    <img src="../static/images/mtnLogo.png">
+                  </ion-card>
+                </ion-col>
+
+
+
+
               </ion-row>
 
             </ion-grid>
@@ -407,7 +463,18 @@ export default {
       padding-top: 2vh;
       padding-bottom: 2vh;
       box-shadow: 0px 0px 15px rgba(33, 43, 54, 0.2);
+   height: 9vh !important;
     }
+
+    .serviceCard img {
+      max-height: 5vh !important;
+       }
+
+
+
+
+
+
 
     ion-thumbnail {
       width: 100%;
@@ -467,6 +534,9 @@ export default {
 
   }
 
+    .checked_icon{
+height: 5vh;
+    }
 
 
 

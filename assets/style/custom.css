@@ -58,12 +58,15 @@ ion-back-button{
 .no-padding{
   padding: 0;
 }
+
 .inner-scroll{
 /*
 top: calc(var(--offset-top) * -2) !important;
 */
 }
 /*
+
+
 
 .active-link > button{
   color: #F7F8FB !important;
