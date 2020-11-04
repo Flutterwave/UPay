@@ -1,9 +1,9 @@
 <template>
 
-  <div>
+  <div >
 
-    <ion-tabs>
-      <ion-tab tab="payments">
+    <ion-tabs >
+      <ion-tab tab="payments" >
         <payment-list></payment-list>
       </ion-tab>
 

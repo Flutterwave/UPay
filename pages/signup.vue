@@ -10,7 +10,7 @@
     <ion-content fullscreen class="ion-padding">
 
 
-      <ion-card class="card_padding">
+      <ion-card class="card_padding centralized_card  ">
 
         <ion-item>
           <ion-label position="floating">First Name</ion-label>

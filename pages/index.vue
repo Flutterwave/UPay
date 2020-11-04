@@ -9,7 +9,7 @@
 
           <div class="logoContainer">
             <img class="logoImg" src="../static/images/logo.png">&nbsp;
-            <p>OSS</p>
+            <p>UPay</p>
           </div>
 
           <div class="header_content">
@@ -353,7 +353,7 @@ export default {
 
     .section2Content {
       padding-top: 3vh;
-      max-width: 50%;
+     /* max-width: 50%;*/
       /*
     text-align: center;
 */

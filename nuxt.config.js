@@ -43,6 +43,7 @@ export default {
     // router with correct public path
     base: baseHref,
     mode: 'history',
+    linkActiveClass: 'active-link'
   },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)

@@ -10,16 +10,18 @@
           <ion-toolbar color="#070e36" style="background-color: #070e36;color: white">
 
 
-            <div class="logoContainer">
-              <img class="logoImg" src="../static/images/logo.png">&nbsp;
-              <p>OSS</p>
-            </div>
+      <a class="logoContainer logoLink" href="/" >
+
+               <img class="logoImg" src="../static/images/logo.png">&nbsp;
+               <p>UPay</p>
+
+
+            </a>
+
+<p class="icon-inner"></p>
 
 
 
-<!--
-
-            <ion-title>Menu</ion-title>-->
           </ion-toolbar>
         </ion-header>
 
@@ -43,6 +45,8 @@
                 <ion-item-divider>
                   <ion-label>Purchase VAS</ion-label>
                 </ion-item-divider>
+
+
 
                 <ion-item button @click="$Utils.navigateTo('/make-payment/airtime')">
                   <ion-icon slot="start" name='call-outline'></ion-icon>
@@ -123,6 +127,7 @@
 
 </template>
 <script>
+
     export default {
 
         data() {
@@ -147,4 +152,8 @@
     display: flex;
     align-items: center;
   }
+.logoLink{
+  text-decoration: none;
+}
+
 </style>
