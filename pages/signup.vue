@@ -78,7 +78,7 @@
 
 
 
-        <ion-button  expand="block" class="centralise margin_top"  @click="signUp" >Submit</ion-button>
+        <ion-button :disabled="!newUserData.firstName || !newUserData.lastName || !newUserData.email || !newUserData.phone || !newUserData.password          "  expand="block" class="centralise margin_top"  @click="signUp" >Submit</ion-button>
 
 
         <div class="centralise">

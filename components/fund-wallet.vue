@@ -29,7 +29,7 @@
         </ion-item>
 
 
-        <ion-button  expand="block" class="centralise margin_top"  @click="makePayment" >Fund</ion-button>
+        <ion-button :disabled="!paymentData.amount"  expand="block" class="centralise margin_top"  @click="makePayment" >Fund</ion-button>
 
 
 

@@ -40,14 +40,14 @@
 
       <ion-input   debounce="0"
                  :value="paymentData.mobileNumber"
-                 @ionInput="paymentData.mobileNumber = $event.target.value"
+                 @ionInput="paymentData.mobileNumber = $event.target.value" type="tel"
                 ></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Amount</ion-label>
 
-        <ion-input  debounce="0"
+        <ion-input type="number"  debounce="0"
                    :value="paymentData.amount"
                    @ionInput="paymentData.amount = $event.target.value"></ion-input>
 
@@ -56,7 +56,7 @@
 
 
 
-      <ion-button  expand="block" class="centralise margin_top" @click="makePayment">PURCHASE</ion-button>
+      <ion-button :disabled="!paymentData.network || !paymentData.mobileNumber || !paymentData.amount"  expand="block" class="centralise margin_top" @click="makePayment">PURCHASE</ion-button>
 
 
     </ion-card>
