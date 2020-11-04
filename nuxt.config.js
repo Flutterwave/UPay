@@ -43,6 +43,10 @@ export default {
     mode: 'history',
     linkActiveClass: 'active-link'
   },
+  env: {
+    pKey: process.env.P_KEY,
+    sKey: process.env.S_KEY,
+  } ,
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [

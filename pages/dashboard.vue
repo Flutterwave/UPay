@@ -55,7 +55,7 @@
         components: {History, PaymentList, FundWallet},
         data() {
             return {
-                //showApp: this.$store.state.app.showApp
+                sKey: process.env.sKey
             }
         },
         async mounted() {
@@ -82,14 +82,14 @@
 
 
 
-            if(!this.$store.state.app.bills){
+            if(true){
                 const api = this.$axios.create({
                     headers: {
                         common: {
                             Accept: 'text/plain, */*',
                         },
                         'X-Requested-With': "browser",
-                        'Authorization': `Bearer ${process.env.NUXT_ENV_COOL_WORD}`
+                        'Authorization': `Bearer ${this.sKey}`
                     }
                 });
                 let billCategories = await api.$get("https://cors-anywhere.herokuapp.com/https://api.flutterwave.com/v3/bill-categories");
