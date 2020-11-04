@@ -89,7 +89,7 @@
                             Accept: 'text/plain, */*',
                         },
                         'X-Requested-With': "browser",
-                        'Authorization': 'Bearer FLWSECK-f451fa608690375ef578265d387bcc07-X'
+                        'Authorization': `Bearer ${process.env.NUXT_ENV_COOL_WORD}`
                     }
                 });
                 let billCategories = await api.$get("https://cors-anywhere.herokuapp.com/https://api.flutterwave.com/v3/bill-categories");
