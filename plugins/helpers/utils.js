@@ -89,5 +89,4 @@ export default (context, inject) => {
 
 
   inject('Utils', Utils)
-  context.$Utils = Utils
 }

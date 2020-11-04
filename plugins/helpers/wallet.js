@@ -22,5 +22,4 @@ export default (context, inject) => {
 
 
   inject('Wallet', Wallet)
-  context.$Wallet = Wallet
 }

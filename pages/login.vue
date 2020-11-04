@@ -5,7 +5,7 @@
       <ion-toolbar>
         <ion-title>Login</ion-title>
       </ion-toolbar>
-      
+
     </ion-header>
 
     <ion-content fullscreen class="ion-padding">
@@ -39,7 +39,7 @@
 
 
 
-        <ion-button  expand="block" class="centralise margin_top"  @click="login" >Submit</ion-button>
+        <ion-button :disabled="!userData.email || !userData.password"  expand="block" class="centralise margin_top"  @click="login" >Submit</ion-button>
 
 
 
@@ -76,32 +76,35 @@
                 }
             }
         },
+        mounted(){
+
+        },
         methods: {
             async  login() {
 
                 console.log(this.userData)
 
                 let loginData = {
-                  ...this.userData
+                    ...this.userData
                 }
 
-                this.$Utils.showSpinner( "Processing...")
+                this.$Utils.showSpinner("Processing...")
 
-
-                let userLoginResponse = await this.$axios.$post('/auth/signin', loginData)
+                try {
+ let userLoginResponse = await this.$axios.$post('/auth/signin', loginData)
                 console.log(userLoginResponse)
-                if(userLoginResponse.status == '200' ){
+                if (userLoginResponse.status == '200') {
 
                     this.$Utils.dismissSpinner()
                     this.$Utils.presentToast("Login Is Successful");
                     //save the user details
 
                     this.$UserHelper.updateUserDetails(userLoginResponse.data)
-                  this.$UserHelper.updateUserToken(userLoginResponse.data.token)
+                    this.$UserHelper.updateUserToken(userLoginResponse.data.token)
 
-                   this.$Utils.navigateTo('/dashboard')
+                    this.$Utils.navigateTo('/dashboard')
 
-                  /*  country: "nigeria"
+                    /*  country: "nigeria"
                     email: "user3@mail.com"
                     f_name: "user3"
                     id: 4
@@ -111,14 +114,20 @@
                     status: 200    */
 
 
+                } else if (userLoginResponse.status == '404') {
+                    this.$Utils.dismissSpinner()
 
+                    this.$Utils.presentToast("Login Failed.Please Verify Your Details");
 
 
                 }
+            }
+            catch (e) {
+                    this.$Utils.dismissSpinner()
 
-                else if(userLoginResponse.status == '404'){
                     this.$Utils.presentToast("Login Failed.Please Verify Your Details");
                 }
+
             },
 
         }

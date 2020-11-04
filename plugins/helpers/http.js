@@ -26,5 +26,5 @@ export default (context, inject) => {
 
 
   inject('Http', Http);
-  context.$Http = Http
+
 }
