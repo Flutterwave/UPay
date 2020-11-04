@@ -61,7 +61,7 @@ ion-back-button{
 
 ion-button{
 
-  -webkit-tap-highlight-color: #f7a622 ;
+  -webkit-tap-highlight-color: #f7a622 !important; ;
 
 }
 

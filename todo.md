@@ -12,7 +12,7 @@
 
 - [x] Update Repo and Host the project on Netlify
 
-
+Use auto process to arrange code and ensure proper spacing
 
 - [x] Add user auth
 

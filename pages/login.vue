@@ -70,8 +70,8 @@
         data() {
             return {
                 userData: {
-                    email: "toybz@mail.com",
-                    password: "123456"
+                    email: "",
+                    password: ""
                 }
             }
         },
