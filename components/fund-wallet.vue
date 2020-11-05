@@ -63,8 +63,8 @@
                     },
                     customer: {
                         name: '',
-                        email: 'customer@mail.com',
-                        phone_number: '081845***044'
+                        email: '',
+                        phone_number: ''
                     },
                     customizations: {
                         title: 'UPay',
@@ -89,27 +89,24 @@
                 this.payWithFlutterwave(this.paymentData)
             },
             async updateWallet() {
-                this.$Utils.showSpinner("Processing...");
+                try{
 
-                let updateWalletResponse = await this.$axios.$post('/balance', {amount: parseInt(this.paymentData.amount)});
-                console.log(updateWalletResponse);
-                if (updateWalletResponse.status == '201') {
-                    this.$Utils.dismissSpinner();
-
-
+                    this.$Utils.showSpinner("Processing...");
+                    let updateWalletResponse = await this.$axios.$post('/balance', {amount: parseInt(this.paymentData.amount)});
+                        this.$Utils.dismissSpinner();
                     this.$store.commit('wallet/update', updateWalletResponse.data.wallet_amount);
-                    this.paymentData.amount = '';
-                    this.isTopUpCompleted = true
+                        this.paymentData.amount = '';
+                        this.isTopUpCompleted = true
+
+                } catch (e) {
 
                 }
-            },
+               },
             closedPaymentModal() {
                 console.log('payment is closed');
                 if (this.isTopUpCompleted) {
                     this.$Utils.presentToast("Wallet Top Up is Successful")
                 }
-
-
             },
             generateReference() {
                 let date = new Date();

@@ -124,19 +124,6 @@
             this.historyList = this.allHistory;
             this.historyIsFetched = true
         },
-        computed: {
-            airtimeHistory() {
-                let history = this.allHistory.filter((item) =>
-                    item.package_data == 'Airtime');
-                return history
-            },
-            dataHistory() {
-                let history = this.allHistory.filter((item) =>
-                    item.package_data == 'DATA');
-                return history
-            },
-
-        },
         methods: {
             segmentChanged(event) {
                 let selectedSegment = event.detail.value;
@@ -151,21 +138,6 @@
                     })
 
                 }
-                /*  switch (selectedSegment) {
-                    case 'all':
-                        this.historyList = this.allHistory
-                        break;
-
-                    case 'airtime':
-                        this.historyList = this.airtimeHistory
-                        break;
-
-                    case 'data':
-                        this.historyList = this.dataHistory
-                        break;
-
-                }*/
-
 
             }
         }

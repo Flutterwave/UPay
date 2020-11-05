@@ -1,91 +1,76 @@
 @font-face {
   font-family: 'Flutterwave';
- src:  url('../../static/font/flw1.ttf');
-}
-@font-face {
-  font-family: 'FlutterwaveBold';
-  src:  url('../../static/font/flw2.ttf');
+  src: url('../../static/font/flw1.ttf');
 }
 
-body, *{
+@font-face {
+  font-family: 'FlutterwaveBold';
+  src: url('../../static/font/flw2.ttf');
+}
+
+body, * {
   font-family: 'Flutterwave', Fallback, sans-serif !important;
 }
 
-h1,h2,h3,h4, h5{
+h1, h2, h3, h4, h5 {
   font-family: 'FlutterwaveBold', Fallback, sans-serif !important;
 }
 
-.centralise{
+.centralise {
   text-align: center !important;
 
 }
-.no-underline{
+
+.no-underline {
   text-decoration: none;
 }
-ion-title{
+
+ion-title {
   text-align: center !important;
 }
-ion-back-button{
-  color:red !important;
+
+ion-back-button {
+  color: red !important;
   background-color: black !important;
 }
-.modal-wrapper.sc-ion-modal-md{
+
+.modal-wrapper.sc-ion-modal-md {
   opacity: 1 !important;
 }
 
-.card_padding{
+.card_padding {
   padding: 20px;
 }
 
-.margin_top{
+.margin_top {
   margin-top: 10px;
 }
 
-.margin_bottom{
+.margin_bottom {
   margin-bottom: 10px;
 }
 
-.margin_left{
+.margin_left {
   margin-left: 10px;
 }
 
-.margin_right{
+.margin_right {
   margin-right: 10px;
 }
-.bold{
+
+.bold {
   font-weight: bolder;
 }
-.no-padding{
+
+.no-padding {
   padding: 0;
 }
 
-ion-button{
+ion-button {
 
-  -webkit-tap-highlight-color: #f7a622 !important; ;
-
-}
-
-.inner-scroll{
-/*
-top: calc(var(--offset-top) * -2) !important;
-*/
-}
-/*
-
-
-
-
-.active-link > button{
-  color: #F7F8FB !important;
-  background-color: #f7a622 !important;
+  -webkit-tap-highlight-color: #f7a622 !important;;
 
 }
-
-.inherit{
-  color: inherit;
-  background: inherit;
-}
-*/
 
 @media only screen and (min-width: 760px) {
 

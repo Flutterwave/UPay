@@ -29,69 +29,6 @@
 
 
         <div class="section2">
-
-          <!--   <div class="section2Container">
-
-
-                 <div class="item-container ion-hide-sm-down" >
-                   <img class="userImage1" src="../static/images/user1.png">
-                 </div>
-
-                 <div  class="item-container">
-
-                   <div class="section2Content ion-padding-horizontal">
-                     <h1>
-                       Pay your Bills
-                       <br/>anywhere, anytime.
-                     </h1>
-
-                     <p>Lorem ipsum snbd kdjjbd djkjcd djckckjbjcs <br>cjcsd ajbjidbd sdjjdsndjsb dsajbasbidjas<br> dsaiaduasbd sajbjsab</p>
-
-
-
-                     <div class="featureList">
-                       <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
-                       <p>
-                         Recharge One time leet yskhbd  dh
-                       </p>
-                     </div>
-
-
-                     <div class="featureList">
-                       <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
-                       <p>
-                         Recharge One time leet yskhbd  dh
-                       </p>
-                     </div>
-
-
-                     <div class="featureList">
-                       <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
-                       <p>
-                         Recharge One time leet yskhbd  dh
-                       </p>
-                     </div>
-
-                     <div class="featureList">
-                       <ion-icon name="checkmark-circle-outline" size="large"  ></ion-icon>
-                       <p>
-                         Recharge One time leet yskhbd  dh
-                       </p>
-                     </div>
-
-
-
-
-
-                   </div>
-
-
-                 </div>
-
-
-             </div>-->
-
-
           <ion-grid>
 
             <ion-row>
@@ -110,15 +47,6 @@
                   <p>Lorem ipsum snbd kdjjbd djkjcd djckckjbjcs <br>cjcsd ajbjidbd sdjjdsndjsb dsajbasbidjas<br>
                     dsaiaduasbd sajbjsab</p>
 
-                  <!--     <ul class="no-padding">
-                         <li> Recharge airtime for your calls </li>
-                         <li> Pay for your internet subscription and data across any ISP </li>
-                         <li> Automate your TV Subscription </li>
-
-                         <li> Pay for your Electricity bills </li>
-
-
-                       </ul>-->
 
                   <div class="featureList">
                     <img class="checked_icon" src="../static/icons/checked.png">
@@ -259,64 +187,8 @@
 
 
 <script>
-    import FundWallet from "~/components/fund-wallet.vue";
-    import PaymentList from "~/components/payment-list.vue";
-    import History from "~/components/history.vue";
-
-
     export default {
-        components: {History, PaymentList, FundWallet},
         layout: 'noSideBar',
-        data() {
-            return {
-                //showApp: this.$store.state.app.showApp
-            }
-        },
-        computed: {
-            showApp() {
-                return this.$store.state.app.showApp
-            }
-        },
-
-        async mounted() {
-
-            /*
-
-
-                   let userDetails = this.$UserHelper.getUserDetails()
-                   if (!userDetails.token){
-                         this.$Utils.navigateTo('/login')
-                   }
-                   else{
-                       try{
-
-                           this.$store.commit('app/setWalletFetchStatus',true )
-
-                           let res =   await this.$axios.$get('balance')
-                           console.log("INIT USER WALLET", res)
-                           this.$store.commit('wallet/update',res.data.wallet_amount )
-                           this.$store.commit('app/setWalletFetchStatus',false )
-                       }
-                       catch (e) {
-                           console.log("Token expired");
-                           this.$store.commit('app/setWalletFetchStatus',false )
-                            this.$Utils.navigateTo('/login')
-                       }
-
-                   }
-
-
-            */
-
-
-        },
-        methods: {
-            makeAppVisible() {
-                this.$store.commit('app/showApp', true)
-            }
-        }
-
-
     }
 </script>
 
@@ -330,16 +202,9 @@
     background-image: url("../static/images/bg1.png");
     display: flex;
     flex-direction: column;
-    /*
-  //border-image-repeat: stretch;
-*/
     background-repeat: no-repeat;
-
     background-size: cover;
-
-
   }
-
 
   .header_content {
     margin: 6vh auto;
@@ -363,61 +228,22 @@
     width: 40vw;
   }
 
-  .section2Container {
-    display: flex;
-    flex-direction: row;
-    /* align-items: center;
- justify-content: center;*/
-
-  }
-
-  .item-container {
-    flex: 1
-  }
-
   .section2Content {
     padding-top: 3vh;
-    /* max-width: 50%;*/
-    /*
-  text-align: center;
-*/
   }
 
   .checkIcon {
     color: #f5a623 !important;
   }
 
-  ion-icon {
-    color: #f5a623 !important;
-    /*
-  --ionicon-stroke-color: #f5a623 !important;
-*/
-    /*
-  background: #f5a623;
-*/
-
-  }
-
   .featureList {
     display: flex;
     align-items: center;
-    /*
-justify-content: center;
-*/
-
-
-  }
-
-  ion-icon div svg polyline {
-    color: #f5a623 !important;
-
   }
 
   .section3 {
     margin-top: 6vh;
     text-align: center;
-
-
   }
 
   .serviceList {
@@ -438,14 +264,15 @@ justify-content: center;
     max-height: 5vh !important;
   }
 
-
   ion-thumbnail {
     width: 100%;
     border: solid #7F828B;
     height: 50%;
 
   }
-
+  .checked_icon {
+    height: 5vh;
+  }
 
   @media only screen and (max-width: 760px) {
     .section1 {
@@ -456,9 +283,7 @@ justify-content: center;
       display: flex;
       flex-direction: column;
       background-repeat: no-repeat;
-
       background-size: cover;
-
 
     }
 
@@ -467,7 +292,6 @@ justify-content: center;
     }
 
     .section2Content {
-
       max-width: 100%;
       padding-top: 1px;
       text-align: center;
@@ -507,9 +331,7 @@ justify-content: center;
 
   }
 
-  .checked_icon {
-    height: 5vh;
-  }
+
 
 
 </style>

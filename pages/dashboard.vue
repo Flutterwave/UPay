@@ -11,7 +11,6 @@
         <fund-wallet></fund-wallet>
       </ion-tab>
 
-
       <ion-tab tab="history">
         <history></history>
       </ion-tab>
@@ -69,11 +68,9 @@
                     this.$store.commit('app/setWalletFetchStatus', true);
 
                     let res = await this.$axios.$get('balance');
-                    console.log("INIT USER WALLET", res);
                     this.$store.commit('wallet/update', res.data.wallet_amount);
                     this.$store.commit('app/setWalletFetchStatus', false)
                 } catch (e) {
-                    console.log("Token expired");
                     this.$store.commit('app/setWalletFetchStatus', false);
                     this.$Utils.navigateTo('/login')
                 }
@@ -81,8 +78,8 @@
             }
 
 
-
-            if(true){
+            //todo: Refactor this
+            if (true) {
                 const api = this.$axios.create({
                     headers: {
                         common: {
@@ -95,11 +92,7 @@
                 let billCategories = await api.$get("https://cors-anywhere.herokuapp.com/https://api.flutterwave.com/v3/bill-categories");
                 this.$store.commit('app/setBillsData', billCategories.data);
 
-                console.log("BILLS", billCategories)
-
             }
-
-
 
         },
         methods: {}
@@ -115,98 +108,4 @@
       display: none;
     }
   }
-
-
-  .header_content {
-    margin: 6vh auto;
-    text-align: center;
-
-  }
-
-  .logoContainer {
-    margin: 2vh 8vh;
-    display: flex;
-    align-items: center;
-  }
-
-  .section2 {
-    margin-top: 8vh;
-  }
-
-  .userImage1 {
-    float: right;
-    padding-right: 7vw;
-    width: 40vw;
-  }
-
-  .section2Container {
-    display: flex;
-    flex-direction: row;
-    /* align-items: center;
-     justify-content: center;*/
-
-  }
-
-  .item-container {
-    flex: 1
-  }
-
-  .section2Content {
-    padding-top: 3vh;
-    max-width: 50%;
-    /*
-        text-align: center;
-    */
-  }
-
-  .checkIcon {
-    color: #f5a623 !important;
-  }
-
-  ion-icon {
-    color: #f5a623 !important;
-    /*
-        --ionicon-stroke-color: #f5a623 !important;
-    */
-    /*
-        background: #f5a623;
-    */
-
-  }
-
-  .featureList {
-    display: flex;
-    align-items: center;
-    /*
-      justify-content: center;
-    */
-
-
-  }
-
-  ion-icon div svg polyline {
-    color: #f5a623 !important;
-
-  }
-
-  .section3 {
-    margin-top: 6vh;
-    text-align: center;
-
-
-  }
-
-  .serviceList {
-    display: flex;
-    width: 70%;
-    margin: 0 auto;
-
-  }
-
-  .serviceCard {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    box-shadow: 0px 0px 15px rgba(33, 43, 54, 0.2);
-  }
-
 </style>

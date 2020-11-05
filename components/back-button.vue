@@ -3,7 +3,7 @@
   <ion-buttons slot="start">
 
     <ion-button @click="$Utils.navigateBack" color="primary">
-      <!-- <ion-icon slot="icon-only" ios="" md="ellipsis-vertical"></ion-icon>-->
+
       <ion-icon name="chevron-back-outline"></ion-icon>
     </ion-button>
 

@@ -37,9 +37,7 @@
                   <ion-select-option :key="item.id" :value="item.biller_name"
                                      v-for="item in selectedNetworkDataPackage">{{ getDataValue(item.biller_name) }}
                   </ion-select-option>
-                  <!-- <ion-select-option>AIRTEL</ion-select-option>
-                   <ion-select-option>ETISALAT</ion-select-option> <ion-select-option>GLO</ion-select-option>
--->
+
                 </ion-select>
 
               </ion-item>
@@ -67,7 +65,8 @@
         </ion-item>
 
 
-        <ion-button :disabled="!paymentData.network || !paymentData.type || !paymentData.mobileNumber" @click="makePayment"
+        <ion-button :disabled="!paymentData.network || !paymentData.type || !paymentData.mobileNumber"
+                    @click="makePayment"
                     class="centralise margin_top" expand="block">PURCHASE
         </ion-button>
 
@@ -83,10 +82,9 @@
 <script>
 
     export default {
-        name: "buy-data",
+        name: "BuyData",
         data() {
             return {
-
                 paymentData: {
                     network: '',
                     networkName: '',
@@ -127,7 +125,7 @@
         },
         watch: {
             'paymentData.network': function (val) {
-                console.log("Selected Network", val);
+
                 let dataPackage = this.allNetworkDataPackage.filter((item) => {
                         return item.biller_code == val
                     }
@@ -138,7 +136,6 @@
                         return item.code == val
                     }
                 );
-                console.log("SELEcted Network", selectedNetwork);
 
                 this.selectedNetworkDataPackage = dataPackage;
                 this.paymentData.networkName = selectedNetwork[0].name
@@ -152,7 +149,7 @@
                 console.log("DATA Package", dataPackage);
                 this.paymentData.amount = dataPackage[0].amount
             },
-            //   deep: true
+
         },
         methods: {
             generateReference() {
@@ -182,18 +179,19 @@
 
                 };
 
-                console.log(paymentParams);
-               // return;
-
-                this.$Utils.showSpinner("Processing...");
-
-                let paymentResponse = await this.$axios.$post('/bills', paymentParams);
-                console.log(paymentResponse);
-                if (paymentResponse.status == '201') {
+                try{
+                    this.$Utils.showSpinner("Processing...");
+                    let paymentResponse = await this.$axios.$post('/bills', paymentParams);
+                    console.log(paymentResponse);
                     this.$Utils.dismissSpinner();
-
                     this.$Utils.presentToast("Data Purchase is Successful")
+
+                }catch (e) {
+                    this.$Utils.dismissSpinner();
+                    this.$Utils.presentToast("Data Purchase failed")
                 }
+
+
             },
 
         },
