@@ -24,22 +24,6 @@ export default (context, inject) => {
 
       if (buttons) {
         toast.buttons = buttons
-        /* [
-         {
-           side: 'start',
-           icon: 'star',
-           text: 'Favorite',
-           handler: () => {
-             console.log('Favorite clicked');
-           }
-         }, {
-           text: 'Done',
-           role: 'cancel',
-           handler: () => {
-             console.log('Cancel clicked');
-           }
-         }
-       ];*/
       }
 
       if (header) {
@@ -65,13 +49,9 @@ export default (context, inject) => {
     },
     loading: document.createElement('ion-loading'),
     async showSpinner(message = '') {
-      // const loading = document.createElement('ion-loading');
 
-      // loading.spinner = null;
-      //  loading.duration = options.duration;
       this.loading.message = message;
       this.loading.translucent = true;
-      // loading.cssClass = 'custom-class custom-loading';
       this.loading.backdropDismiss = false;
 
       document.body.appendChild(this.loading);

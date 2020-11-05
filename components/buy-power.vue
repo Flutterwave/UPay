@@ -138,23 +138,18 @@
             }
         },
         watch: {
-            //45700754471
             'paymentData.provider': function (val) {
-                console.log("Selected Power Provider", val);
                 let discoItem = this.allPackage.filter((item) => {
                     return (item.item_code == val)
                 });
 
                 this.selectedItemDetails = discoItem[0];
                 console.log("Selected Power Item", this.selectedItemDetails)
-
-
             }
         },
         methods: {
 
             async validateDeviceId() {
-                console.log("DEVICE ID is", this.paymentData.deviceId);
 
                 this.customerDetails = {};
                 try {
@@ -165,12 +160,12 @@
                                 Accept: 'text/plain, */*',
                             },
                             'X-Requested-With': "browser",
-                            'Authorization': 'Bearer FLWSECK-f451fa608690375ef578265d387bcc07-X'
+                            'Authorization': `Bearer ${process.env.sKey}`
                         }
                     });
 
                     let device = await api.$get(`https://cors-anywhere.herokuapp.com/https://api.flutterwave.com/v3/bill-items/${this.selectedItemDetails.item_code}/validate?code=${this.selectedItemDetails.biller_code}&customer=${this.paymentData.deviceId}`);
-                    console.log(device);
+
                     this.customerDetails = device.data;
                     this.showSpinner = false
                 } catch (e) {
@@ -183,13 +178,6 @@
             generateReference() {
                 let date = new Date();
                 return date.getTime().toString();
-            },
-
-            getDataValue(dataString) {
-
-                let values = dataString.split(" ");
-                let dataValue = values[1] + values[2];
-                return dataValue.replace('data', '')
             },
 
             async makePayment() {
@@ -205,19 +193,19 @@
                     "package_data": "POWER",
                 };
 
-                console.log(paymentParams);
+                try{
+                    this.$Utils.showSpinner("Processing...");
+                    let paymentResponse = await this.$axios.$post('/bills', paymentParams);
 
-                return;
-
-                this.$Utils.showSpinner("Processing...");
-
-                let paymentResponse = await this.$axios.$post('/bills', paymentParams);
-                console.log(paymentResponse);
-                if (paymentResponse.status == '201') {
-                    this.$Utils.dismissSpinner();
-
+                        this.$Utils.dismissSpinner();
                     this.$Utils.presentToast("Cable Subscription is Successful")
+
+                } catch (e) {
+                    this.$Utils.dismissSpinner();
+                    this.$Utils.presentToast("Cable Subscription failed")
                 }
+
+
             },
 
         },

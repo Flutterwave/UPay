@@ -72,29 +72,6 @@ ion-button {
 
 }
 
-.inner-scroll {
-  /*
-  top: calc(var(--offset-top) * -2) !important;
-  */
-}
-
-/*
-
-
-
-
-.active-link > button{
-  color: #F7F8FB !important;
-  background-color: #f7a622 !important;
-
-}
-
-.inherit{
-  color: inherit;
-  background: inherit;
-}
-*/
-
 @media only screen and (min-width: 760px) {
 
   .centralized_card {

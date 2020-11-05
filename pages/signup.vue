@@ -52,8 +52,6 @@
             debounce="0"
             type="tel"></ion-input>
 
-          <!--    <input type="">-->
-
         </ion-item>
 
         <ion-item>
@@ -119,8 +117,6 @@
         methods: {
             async signUp() {
 
-                console.log(this.newUserData);
-
                 let signUpData = {
                     "f_name": this.newUserData.firstName,
                     "l_name": this.newUserData.lastName,
@@ -130,44 +126,24 @@
                     "password": this.newUserData.password
                 };
 
-                this.$Utils.showSpinner('Processing');
+                try{
+                    this.$Utils.showSpinner('Processing');
                 let userSignUpResponse = await this.$axios.$post('/auth/signup', signUpData);
-                console.log(userSignUpResponse);
-                if (userSignUpResponse.status == '201') {
 
                     this.$Utils.dismissSpinner();
                     this.$Utils.presentToast("Sign Up is successful");
 
                     //save the user details
-
                     this.$UserHelper.updateUserDetails(userSignUpResponse.data);
                     this.$UserHelper.updateUserToken(userSignUpResponse.data.token);
 
                     this.$Utils.navigateTo('/')
 
-
+                } catch (e) {
+                    this.$Utils.dismissSpinner();
+                    this.$Utils.presentToast("Sign Up Failed.Please try again");
                 }
 
-
-                /*  country: "nigeria"
-                  email: "iser1@mail.com"
-                  f_name: "user1"
-                  id: 2
-                  l_name: "user1"
-                  phone: "090876789"
-                  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoyLCJpbmZvIjoidXNlcjEgdXNlcjEiLCJpYXQiOjE2MDM1NTQxODksImV4cCI6MTYwMzU5NzM4OX0.529T-fUZv90VzdxpEhhMt42Vmww5jx3nRaQvkObkjLU"
-                  status: 201
-    */
-
-
-                let signUpdata = {
-                    "f_name": "string",
-                    "l_name": "string",
-                    "email": "string",
-                    "phone": "string",
-                    "country": "string",
-                    "password": "string"
-                }
             },
         }
     }

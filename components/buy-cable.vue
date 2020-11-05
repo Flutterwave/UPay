@@ -31,8 +31,7 @@
               <ion-item>
                 <ion-label position="floating">Package</ion-label>
                 <ion-select :value="paymentData.type" @ionChange="paymentData.type = $event.target.value">
-                  <ion-select-option :key="item.id" :value="item.biller_name" v-for="item in selectedProviderPackage">{{
-                    item.biller_name }}
+                  <ion-select-option :key="item.id" :value="item.biller_name" v-for="item in selectedProviderPackage">{{item.biller_name}}
                   </ion-select-option>
 
                 </ion-select>
@@ -109,9 +108,9 @@
                     amount: '',
                     type: '',
                 },
-                isSubmitting: false,
                 showSpinner: false,
-                providers: [{
+                providers: [
+                    {
                     name: "DSTV",
                     code: "BIL121"
                 },
@@ -124,8 +123,8 @@
                         code: "BIL123"
                     }],
 
-                selectedProviderPackage: [],
-                selectedPackageData: {},
+                selectedProviderPackage: [], //packages offered  the selected provider
+                selectedPackageData: {}, //the selected package
                 customerDetails: {}
 
             }
@@ -140,9 +139,7 @@
         },
         watch: {
             'paymentData.provider': function (val) {
-                console.log("Selected Cable Provider", val);
-                let _package = this.allPackage.filter((item) => {
-                        return (item.biller_code == val && item.country == 'NG')
+                let _package = this.allPackage.filter((item) => { return (item.biller_code == val && item.country == 'NG')
                     }
                 );
 
@@ -151,7 +148,6 @@
                         return item.code == val
                     }
                 );
-                console.log("Selected Package data", selectedPackage);
 
                 this.selectedProviderPackage = _package;
                 this.paymentData.providerName = selectedPackage[0].name
@@ -166,12 +162,10 @@
                 this.paymentData.amount = _package[0].amount;
                 this.selectedPackageData = _package[0]
             },
-            //   deep: true
         },
         methods: {
 
             async validateDeviceId() {
-                console.log("DEVICE ID is", this.paymentData.deviceId);
 
                 this.customerDetails = {};
                 try {
@@ -182,12 +176,11 @@
                                 Accept: 'text/plain, */*',
                             },
                             'X-Requested-With': "browser",
-                            'Authorization': 'Bearer FLWSECK-f451fa608690375ef578265d387bcc07-X'
+                            'Authorization': `Bearer ${process.env.sKey}`
                         }
                     });
-// 1046275698
+
                     let device = await api.$get(`https://cors-anywhere.herokuapp.com/https://api.flutterwave.com/v3/bill-items/${this.selectedPackageData.item_code}/validate?code=${this.selectedPackageData.biller_code}&customer=${this.paymentData.deviceId}`);
-                    console.log(device);
                     this.customerDetails = device.data;
                     this.showSpinner = false
                 } catch (e) {
@@ -201,14 +194,6 @@
                 let date = new Date();
                 return date.getTime().toString();
             },
-
-            getDataValue(dataString) {
-
-                let values = dataString.split(" ");
-                let dataValue = values[1] + values[2];
-                return dataValue.replace('data', '')
-            },
-
             async makePayment() {
 
                 let paymentParams = {
@@ -222,19 +207,22 @@
                     "package_data": "CABLE",
                 };
 
-                console.log(paymentParams);
+                try{
+                    this.$Utils.showSpinner("Processing...");
 
-                return;
+                    let paymentResponse = await this.$axios.$post('/bills', paymentParams);
+                    console.log(paymentResponse);
 
-                this.$Utils.showSpinner("Processing...");
-
-                let paymentResponse = await this.$axios.$post('/bills', paymentParams);
-                console.log(paymentResponse);
-                if (paymentResponse.status == '201') {
                     this.$Utils.dismissSpinner();
 
                     this.$Utils.presentToast("Cable Subscription is Successful")
+
+                }catch (e) {
+                    this.$Utils.dismissSpinner();
+
+                    this.$Utils.presentToast("Cable Subscription failed")
                 }
+
             },
 
         },

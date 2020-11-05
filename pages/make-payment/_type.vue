@@ -1,9 +1,7 @@
 <template>
   <div>
 
-
     <buy-airtime v-if="paymentType == 'airtime'"></buy-airtime>
-
 
     <buy-cable v-if="paymentType == 'cable'"></buy-cable>
     <buy-data v-if="paymentType == 'data'"></buy-data>
@@ -25,7 +23,6 @@
         components: {BuyPower, BuyData, BuyCable, BuyAirtime},
         async asyncData(context) {
             let paymentType = context.params.type;
-
             return {
                 paymentType
             }

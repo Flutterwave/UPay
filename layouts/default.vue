@@ -1,10 +1,7 @@
 <template>
   <ion-app>
 
-    <nuxt v-if="isMobileView"/>
-
-
-    <ion-split-pane content-id="main-content" v-else when="sm">
+    <ion-split-pane content-id="main-content" when="sm">
       <ion-menu :swipe-gesture="false" content-id="main-content">
         <ion-header>
           <ion-toolbar color="#070e36" style="background-color: #070e36;color: white">
@@ -128,19 +125,6 @@
 
     export default {
 
-        data() {
-            return {
-                isMobileView: false
-            }
-        }
-        ,
-        created() {
-            if (process.browser) {
-                let recaptchaScript = document.createElement('script');
-                recaptchaScript.setAttribute('src', 'https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js')
-                //  document.body.appendChild(recaptchaScript)
-            }
-        }
     }
 </script>
 

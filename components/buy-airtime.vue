@@ -81,8 +81,7 @@
                     network: '',
                     mobileNumber: '',
                     amount: ''
-                },
-                isSubmitting: false
+                }
             }
         },
         methods: {
@@ -104,17 +103,19 @@
                     "package_data": "Airtime"
                 };
 
-                console.log(paymentParams);
                 this.$Utils.showSpinner("Processing...");
 
-                let paymentResponse = await this.$axios.$post('/bills', paymentParams);
-                console.log(paymentResponse);
-                if (paymentResponse.status == '201') {
+                try{
+                    let paymentResponse = await this.$axios.$post('/bills', paymentParams);
+                    console.log(paymentResponse);
                     this.$Utils.dismissSpinner();
+                     this.$Utils.presentToast("Airtime Purchase is successful")
 
-                    // alert("Payment successful")
-                    this.$Utils.presentToast("Airtime Purchase is successful")
+                } catch (e) {
+                    this.$Utils.dismissSpinner();
+                    this.$Utils.presentToast("Airtime Purchase failed.")
                 }
+
             },
 
         },
