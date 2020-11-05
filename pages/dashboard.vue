@@ -81,8 +81,7 @@
             }
 
 
-
-            if(true){
+            if (true) {
                 const api = this.$axios.create({
                     headers: {
                         common: {
@@ -98,7 +97,6 @@
                 console.log("BILLS", billCategories)
 
             }
-
 
 
         },

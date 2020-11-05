@@ -48,7 +48,6 @@
                     dsaiaduasbd sajbjsab</p>
 
 
-
                   <div class="featureList">
                     <img class="checked_icon" src="../static/icons/checked.png">
                     <p>

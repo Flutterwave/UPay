@@ -67,7 +67,8 @@
         </ion-item>
 
 
-        <ion-button :disabled="!paymentData.network || !paymentData.type || !paymentData.mobileNumber" @click="makePayment"
+        <ion-button :disabled="!paymentData.network || !paymentData.type || !paymentData.mobileNumber"
+                    @click="makePayment"
                     class="centralise margin_top" expand="block">PURCHASE
         </ion-button>
 
