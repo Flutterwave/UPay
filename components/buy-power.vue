@@ -207,7 +207,7 @@
 
                 console.log(paymentParams);
 
-                return;
+             //   return;
 
                 this.$Utils.showSpinner("Processing...");
 
