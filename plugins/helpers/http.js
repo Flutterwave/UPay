@@ -1,10 +1,8 @@
 export default (context, inject) => {
 
   context.$axios.onRequest(config => {
-
     let userToken = context.$UserHelper.getUserDetails().token;
     config.headers.common['Authorization'] = userToken;
-    console.log("Axios Config", config)
   });
 
   context.$axios.onError(error => {
