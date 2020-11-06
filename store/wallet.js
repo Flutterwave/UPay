@@ -1,10 +1,10 @@
 export const state = () => ({
-  amount: 0
+  amount: 0,
 });
 
 export const mutations = {
   update(state, value) {
-    state.amount = value
+    state.amount = value;
   },
 
   /*  remove(state, { todo }) {

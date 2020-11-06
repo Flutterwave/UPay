@@ -7,9 +7,9 @@
 </template>
 
 <script>
-    export default {
-        props: ['error'],
-        layout: 'noSideBar',
-        // you can set a custom layout for the error page
-    }
+export default {
+  props: ["error"],
+  layout: "noSideBar",
+  // you can set a custom layout for the error page
+};
 </script>

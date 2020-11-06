@@ -1,31 +1,29 @@
 export default (context, inject) => {
-
   const UserHelper = {
-    userToken: '',
+    userToken: "",
     updateUserToken(token) {
       this.userToken = token;
-      context.$axios.setHeader('Authorization', token);
-      console.log("New Token = ", this.userToken)
+      context.$axios.setHeader("Authorization", token);
+      console.log("New Token = ", this.userToken);
     },
 
     updateUserDetails(userDetails) {
-
-      localStorage.setItem('user', JSON.stringify(userDetails))
+      localStorage.setItem("user", JSON.stringify(userDetails));
     },
     getUserDetails() {
-      let userDetails = localStorage.getItem('user');
+      let userDetails = localStorage.getItem("user");
       if (!userDetails) {
-        userDetails = "{}"
+        userDetails = "{}";
       }
-      return JSON.parse(userDetails)
+      return JSON.parse(userDetails);
     },
 
     logOut() {
-      this.updateUserToken('');
+      this.updateUserToken("");
       this.updateUserDetails({});
-      context.$Utils.navigateTo('/login')
-    }
+      context.$Utils.navigateTo("/login");
+    },
   };
 
-  inject('UserHelper', UserHelper)
-}
+  inject("UserHelper", UserHelper);
+};
