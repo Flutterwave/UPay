@@ -161,7 +161,7 @@ export default {
               Accept: "text/plain, */*",
             },
             "X-Requested-With": "browser",
-            Authorization: `Bearer ${process.env.sKey}`,
+            Authorization: `Bearer`,
           },
         });
 

@@ -9,7 +9,11 @@ export default (context, inject) => {
     if (code === 400) {
       // redirect('/400')
     }
+
+ 
+
   });
+ 
 
   const Http = {
     get: (url, params) => {},

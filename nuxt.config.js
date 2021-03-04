@@ -45,7 +45,7 @@ export default {
   },
   env: {
     pKey: process.env.P_KEY,
-    sKey: process.env.S_KEY,
+    sKey: '',
   },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)

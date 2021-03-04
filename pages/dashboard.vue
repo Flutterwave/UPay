@@ -42,7 +42,7 @@ export default {
   components: { History, PaymentList, FundWallet },
   data() {
     return {
-      sKey: process.env.sKey,
+      sKey: '',
     };
   },
   async mounted() {
