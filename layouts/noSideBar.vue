@@ -4,11 +4,9 @@
   </ion-app>
 </template>
 <script>
-    export default {
-        name: "noSideBar"
-    }
+export default {
+  name: "noSideBar",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

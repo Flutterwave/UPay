@@ -1,29 +1,20 @@
 <template>
   <div>
-
     <ion-header translucent>
       <ion-toolbar>
         <ion-title>History</ion-title>
         <profile-button class="ion-hide-md-up"></profile-button>
-
       </ion-toolbar>
-
     </ion-header>
 
-
     <ion-content class="" fullscreen>
-
-
-      <ion-card style="margin-top: 1vh;height: 100vh">
-
+      <ion-card style="margin-top: 1vh; height: 100vh">
         <ion-card-content class="no-padding">
           <ion-toolbar>
             <ion-segment @ionChange="segmentChanged($event)" value="all">
-
               <ion-segment-button value="all">
                 <ion-label>All</ion-label>
               </ion-segment-button>
-
 
               <ion-segment-button value="airtime">
                 <ion-label>Airtime</ion-label>
@@ -39,111 +30,97 @@
               <ion-segment-button value="power">
                 <ion-label>Power</ion-label>
               </ion-segment-button>
-
-
             </ion-segment>
           </ion-toolbar>
 
           <div v-if="historyIsFetched">
-
             <ion-list>
-
               <ion-item :key="item.id" v-for="item in historyList">
-
                 <ion-label>
-                  <h3>
-                    Category: {{item.package_data}}
-                  </h3>
+                  <h3>Category: {{ item.package_data }}</h3>
+                  <p>Item: {{ item.biller_name }}</p>
+                  <p>Price: ₦{{ item.amount }}</p>
                   <p>
-                    Item: {{item.biller_name}}
-                  </p>
-                  <p>
-                    Price: ₦{{item.amount}}
-                  </p>
-                  <p>
-                    DateTime: {{new Date(item.created_at).toLocaleString()}}
+                    DateTime: {{ new Date(item.created_at).toLocaleString() }}
                   </p>
                 </ion-label>
               </ion-item>
-
-
             </ion-list>
-
-
           </div>
-
 
           <div v-else>
-
             <ion-list>
-
               <ion-item :key="index" v-for="index in 10">
-
                 <ion-label>
                   <h3>
-                    <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                    <ion-skeleton-text
+                      animated
+                      style="width: 50%"
+                    ></ion-skeleton-text>
                   </h3>
                   <p>
-                    <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                    <ion-skeleton-text
+                      animated
+                      style="width: 80%"
+                    ></ion-skeleton-text>
                   </p>
                   <p>
-                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                    <ion-skeleton-text
+                      animated
+                      style="width: 60%"
+                    ></ion-skeleton-text>
                   </p>
                   <p>
-                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                    <ion-skeleton-text
+                      animated
+                      style="width: 60%"
+                    ></ion-skeleton-text>
                   </p>
                 </ion-label>
               </ion-item>
-
             </ion-list>
-
           </div>
-
-
         </ion-card-content>
       </ion-card>
-
     </ion-content>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "History",
-        data() {
-            return {
-                allHistory: [],
-                historyList: [],
-                historyIsFetched: false
-            }
-        },
-        async mounted() {
-            console.log("sync data");
-            let history = await this.$axios.$get('/bills');
-            this.allHistory = history.data;
-            this.historyList = this.allHistory;
-            this.historyIsFetched = true
-        },
-        methods: {
-            segmentChanged(event) {
-                let selectedSegment = event.detail.value;
-                console.log("SEGMENT", selectedSegment);
+export default {
+  name: "History",
+  data() {
+    return {
+      allHistory: [],
+      historyList: [],
+      historyIsFetched: false,
+    };
+  },
+  async mounted() {
+    console.log("sync data");
+    let history = await this.$axios.$get("/bills");
+    this.allHistory = history.data;
+    this.historyList = this.allHistory;
+    this.historyIsFetched = true;
+  },
+  methods: {
+    segmentChanged(event) {
+      let selectedSegment = event.detail.value;
+      console.log("SEGMENT", selectedSegment);
 
-                if (selectedSegment == 'all') {
-                    this.historyList = this.allHistory
-                } else {
-                    this.historyList = this.allHistory.filter((item) => {
-                        return (item.package_data.toLocaleLowerCase() == selectedSegment.toLocaleLowerCase())
-
-                    })
-
-                }
-
-            }
-        }
-    }
+      if (selectedSegment == "all") {
+        this.historyList = this.allHistory;
+      } else {
+        this.historyList = this.allHistory.filter((item) => {
+          return (
+            item.package_data.toLocaleLowerCase() ==
+            selectedSegment.toLocaleLowerCase()
+          );
+        });
+      }
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

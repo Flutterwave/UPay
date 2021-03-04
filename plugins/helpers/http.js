@@ -1,29 +1,23 @@
 export default (context, inject) => {
-
-  context.$axios.onRequest(config => {
-
+  context.$axios.onRequest((config) => {
     let userToken = context.$UserHelper.getUserDetails().token;
-    config.headers.common['Authorization'] = userToken;
-    console.log("Axios Config", config)
+    config.headers.common["Authorization"] = userToken;
   });
 
-  context.$axios.onError(error => {
+  context.$axios.onError((error) => {
     const code = parseInt(error.response && error.response.status);
     if (code === 400) {
       // redirect('/400')
     }
+
+ 
+
   });
+ 
 
   const Http = {
-    'get': (url, params) => {
-
-
-    },
-
-
+    get: (url, params) => {},
   };
 
-
-  inject('Http', Http);
-
-}
+  inject("Http", Http);
+};
